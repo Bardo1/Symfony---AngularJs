@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html ng-app="inspinia">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title page-title>Login</title>
+    <link href="{{ app.request.basepath }}/css/bootstrap.min.css" rel="stylesheet">
+    <link id="loadBefore" href="{{ app.request.basepath }}/css/style.css" rel="stylesheet">
+</head>
+<style type="text/css">
+    body {
+    background-image: url({{ app.request.basepath }}/imagenes/fondo4.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+</style>
+<body>
+<div class="loginColumns animated fadeInDown">
+<div class="ibox-content">
+    <div class="row">
+        <div class="center-block">
+            <img src="{{ app.request.basepath }}/imagenes/success.png" class="img-rounded img-responsive center-block" style="width:130px;text-align:center;"/>
+            <h2 class="font-bold" style="text-align:center;">Nueva cuenta ingresada con exito!</h2>
+        </div>
+        <div>
+            <div class="ibox-content">
+            <div>
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <h3 style="text-align:center;"> Ha sido ingresado correctamente con el nombre de usuario : {{  app.user.username }} </h3>
+                {% else %}
+                esto es afuera en el log in 
+                <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                {% endif %}
+            </div>
+<br>
+<br>
+
+<div class="form-group">
+    <label class="col-md-4 control-label" for="singlebutton"></label>
+    <div class="col-md-4">
+        <a id="singlebutton" href="{{ path('login_inicial') }}" name="singlebutton" class="btn btn-primary center-block">
+            Volver al Login
+        </a>
+    </div>
+</div>
+
+            </div>
+           </div>
+        </div>
+    </div>
+
+</div>
+</div>
+
+</body>
+</html>

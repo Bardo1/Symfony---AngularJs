@@ -1,0 +1,69 @@
+<fieldset>
+    <form name="userForm"  class="ng-pristine ng-valid" novalidate>
+                <div class="ibox-content">
+                    <div>    
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group" ng-class="{ 'has-errors' : userForm.zhsSector.$invalid && !zhsSector.$pristine , 'no-errors' : userForm.zhsSector.$valid}">
+                                    <label>Sector</label>
+                                    <select
+                                    style="visibility: visible;"
+                                    chosen
+                                    class="form-control"
+                                    allow-single-deselect="true"
+                                    placeholder-text-single="'Seleccione Sector'"
+                                    no-results-text="'Tough luck'"
+                                    data-ng-model = "zhsSector1" 
+                                    ng-required = "true" 
+                                    name = "zhsSector"  
+                                    ng-options="item as item.nombre for item in items1 track by item.id" 
+                                    ng-change="prueba()">
+                                    <option value="" selected>Seleccione Sector</option> 
+                                    </select>
+                                    </div>                                                
+                                    <div class="error-container" ng-show="userForm.zhsSector.$dirty && userForm.zhsSector.$invalid && !userForm.zhsSector.$pristine" ng-messages="userForm.zhsSector.$error">                   
+                                    <div class="error" ng-message="required" style="color: #a94442;">
+                                        El sector es requerido.
+                                    </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6"> 
+                                    <div class="form-group" ng-class="{ 'has-errors': userForm.zhsRubro.$invalid && !zhsRubro.$pristine , 'no-errors' : userForm.zhsRubro.$valid}">
+                                    <label>Rubro</label>
+                                    <select
+                                    chosen
+                                    class="form-control"
+                                    allow-single-deselect="true"
+                                    placeholder-text-single="'Seleccione Rubro'"
+                                    no-results-text="'Tough luck'"
+                                    data-ng-model = "zhsRubro1" 
+                                    ng-required = "true" 
+                                    name = "zhsRubro"  
+                                    ng-options="item as item.nombre for item in items2 track by item.id">
+                                    <option value="" selected>Seleccione Rubro</option> 
+                                    </select>
+                                    </div>                                                
+                                    <div class="error-container" ng-show="userForm.zhsRubro.$dirty && userForm.zhsRubro.$invalid && !userForm.zhsRubro.$pristine" ng-messages="userForm.zhsRubro.$error">                   
+                                    <div class="error" ng-message="required" style="color: #a94442;">
+                                    El Rubro es requerido.
+                                    </div>
+                                    </div> 
+                                </div>
+                            </div>
+                    </div>
+                
+                </div>
+                  <br> 
+            
+                                                    
+                            <div class="form-inline">
+                                <button type="submit" ng-click="pasarAlDos()"  
+                                class="btn btn-primary" 
+                                ng-disabled="userForm.$invalid" 
+                                style="margin-bottom: 0px;">
+                                <strong>Siguiente</strong>
+                                </button>                                    
+                            </div>   
+     </form>
+</fieldset>
+                

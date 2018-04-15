@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Genrubros list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idrubro</th>
+                <th>Idsector</th>
+                <th>Rubro</th>
+                <th>Ordenrubro</th>
+                <th>Idcategoria</th>
+                <th>Activo</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for genRubro in genRubros %}
+            <tr>
+                <td><a href="{{ path('genrubro_show', { 'idrubro': genRubro.idrubro }) }}">{{ genRubro.idrubro }}</a></td>
+                <td>{{ genRubro.idsector }}</td>
+                <td>{{ genRubro.rubro }}</td>
+                <td>{{ genRubro.ordenrubro }}</td>
+                <td>{{ genRubro.idcategoria }}</td>
+                <td>{{ genRubro.activo }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('genrubro_show', { 'idrubro': genRubro.idrubro }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('genrubro_edit', { 'idrubro': genRubro.idrubro }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('genrubro_new') }}">Create a new genRubro</a>
+        </li>
+    </ul>
+{% endblock %}

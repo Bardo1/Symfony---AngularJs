@@ -1,0 +1,24 @@
+{# obtiene el total de resultados #}
+<div class="count">
+    {{ pagination.getTotalItemCount }}
+</div>
+<table>
+<tr>
+{# organización de resultados de acuerdo a lo que viene de la query que mandaste #}
+    <th>{{ knp_pagination_sortable(pagination, 'Id', 'a.id') }}</th>
+    <th{% if pagination.isSorted('a.nombre') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'nombre', 'a.nombre') }}</th>
+</tr>
+ 
+{# cuerpo de la tabla con los resultados obteniéndolos del result de tu controller #}
+{% for article in pagination %}
+<tr {% if loop.index is odd %}class="color"{% endif %}>
+    <td>{{ article.id }}</td>
+    <td>{{ article.nombre }}</td>
+</tr>
+{% endfor %}
+</table>
+{# display navigation #}
+
+<div class="navigation">
+    {{ knp_pagination_render(pagination) }}
+</div>

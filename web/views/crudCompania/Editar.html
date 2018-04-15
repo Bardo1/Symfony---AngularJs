@@ -1,0 +1,114 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-6 col-md-6">
+        <h2>Mantenedor Compañia</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a ui-sref="index.companiaInicial">Compañia Inicial</a>
+            </li>
+            <li>
+                <a>Editar Compañia</a>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-6 col-md-6">
+       <a class="btn-sm pull-right" ui-sref="index.companiaInicial" style="margin-top: 40px;height: 31px;">
+         <i class="fa fa-level-up" aria-hidden="true"></i> Volver
+      </a>  
+    </div>
+</div>
+<br>
+
+<div class="panel panel-default">
+                <div class="ibox-title">
+                    <h5>Editar Compañia
+                    </h5>
+                </div>
+<div class="container-fluid">
+<div class="col-lg-offset-2 col-lg-8 col-md-10 col-md-offset-1 col-sm-12 ">
+<div>
+                <div>
+                    <form  name="userForm" ng-submit="modificarCompania()"  style="padding-bottom:20px;" class="ng-pristine ng-valid" novalidate> 
+                         <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group" ng-class="{'has-error': userForm.comRut.$invalid && !userForm.comRut.$pristine }">
+                                <label>Rut</label> 
+                                <input type="text" ng-rut name="comRut" class="form-control" ng-model="comRut" placeholder="Rut Compañia" required>
+                                <p ng-show="userForm.comRut.$invalid && !userForm.comRut.$pristine" class="help-block">
+                                El rut de la compañia es requerido</p>
+                                </div>
+                            </div>
+                                <div class="col-md-6">
+                                <div class="form-group" ng-class="{ 'has-error' : userForm.comSigla.$invalid && !userForm.comSigla.$pristine }">
+                                <label>Sigla</label> 
+                                <input type="text" name="comSigla" ng-model="comSigla"  placeholder="Sigla" class="form-control" required>
+                                <p ng-show="userForm.comSigla.$invalid && !userForm.comSigla.$pristine" class="help-block">La sigla es requerida.</p>
+                                </div>
+                            </div>
+                     </div>
+                    <div class="row">
+                         <div class="col-md-6">
+                                <div class="form-group" ng-class="{ 'has-error' : userForm.comNombre.$invalid && !userForm.comNombre.$pristine }">
+                                <label>Nombre</label> 
+                                <input ng-model="comNombre" name="comNombre" type="text" placeholder="Nombre" class="form-control" required>
+                                <p ng-show="userForm.comNombre.$invalid && !userForm.comNombre.$pristine" class="help-block">El nombre es requerido.</p>
+                                </div>
+                         </div>
+                         <div class="col-md-6">       
+                                <div class="form-group" ng-class="{ 'has-error' : userForm.comRazonSocial.$invalid && !userForm.comRazonSocial.$pristine }">
+                                <label>Razón social</label> 
+                                <input ng-model="comRazonSocial" name="comRazonSocial" type="text" placeholder="Razón social" class="form-control" required>
+                                <p ng-show="userForm.comRazonSocial.$invalid && !userForm.comRazonSocial.$pristine" class="help-block">La razón social es requerida.</p>
+                                </div>
+                         </div>
+                    </div>
+                                <br>
+                                <div class="form-inline">
+                                <label>Activo</label> 
+                                <input type="checkbox" name="comActivo" ng-model="comActivo" class="form-control" value="false" style="width: 100px;height: 18px;">
+                                </div>
+                                <br>
+                                <br>
+
+                                <div class="ibox-footer">
+                                  <div class="form-inline">
+                                    <button ui-sref="index.companiaInicial" 
+                                    class="btn btn-primary pull-left"                         
+                                    style="margin-bottom: 0px;">
+                                    <strong>Volver</strong>
+                                    </button>
+                                    <button type="submit" href="javascript:void(0);" 
+                                    class="btn btn-primary pull-right" 
+                                    ng-disabled="userForm.$invalid" 
+                                    style="margin-bottom: 0px;">
+                                    <strong>Modificar Compañia</strong>
+                                    </button> 
+                                   </div>                                   
+                                </div>
+                                <br>
+                                <br>                                
+                    </form>
+                </div>
+</div>
+</div>
+</div>
+
+<script>
+    function soloLetras(e){
+       key = e.keyCode || e.which;
+       tecla = String.fromCharCode(key).toLowerCase();
+       letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+       especiales = "8-37-39-46";
+
+       tecla_especial = false
+       for(var i in especiales){
+            if(key == especiales[i]){
+                tecla_especial = true;
+                break;
+            }
+        }
+
+        if(letras.indexOf(tecla)==-1 && !tecla_especial){
+            return false;
+        }
+    }
+</script>

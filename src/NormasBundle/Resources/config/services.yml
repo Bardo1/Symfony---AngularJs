@@ -1,0 +1,4 @@
+services:
+#    normas.example:
+#        class: NormasBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

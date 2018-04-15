@@ -1,0 +1,118 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Informes Sac Rubro Zhs</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+            <li class="active">
+                <strong>Informes Sac Rubro Zhss</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight" >
+<div class="row">
+<div class="col-lg-12 col-xs-6">
+<div class="ibox float-e-margins">
+<div class="ibox-content">                              
+                    <form name="userForm"  class="p-lg">    
+                            <div class="row">    
+                                    <div class="col-md-6">
+                                        <em class="input-label">Sector</em>
+                                        <select 
+                                        chosen
+                                        style="width: 317px;"
+                                        ng-model = "srzSector1" 
+                                        name = "srzSector"
+                                        placeholder-text-single = "'Seleccione Sector'"
+                                        ng-options = "item as item.nombre for item in items track by item.id"
+                                        ng-change="listarChosenSector()"
+                                        style="width:200px;">
+                                        <option value="" selected>Seleccione Sector</option> 
+                                        </select>   
+                                   </div>
+                                    <div class="col-md-6">
+                                        <em class="input-label">Rubro</em>
+                                        <select     
+                                        chosen                                                   
+                                        data-ng-model = "srzRubro1" 
+                                        ng-required = "true" 
+                                        name = "srzRubro"
+                                        allow-single-deselect = "true" 
+                                        placeholder-text-single = "'Seleccione Comuna'"
+                                        ng-options="item as item.nombre for item in items1 track by item.id" 
+                                        style="width:200px;">
+                                        <option value="" selected>Seleccione Rubro</option>
+                                        </select>
+                                    </div>         
+                            </div>  
+                        <br>
+                            <div class="row">
+                                    <div class="col-md-6">
+                                            <em>Temporada </em>
+                                            <select
+                                            chosen
+                                            allow-single-deselect="true"
+                                            placeholder-text-single="'Seleccione Temporada'"
+                                            no-results-text="'Tough luck'"
+                                            ng-model="srzTemporada"
+                                            ng-change="listarChosenTemporada()"
+                                            ng-options = "item as item.temporada for item in items2 track by item.id"
+                                            style="width:200px;">
+                                            <option value="">Seleccione Temporada</option>
+                                            </select>                                            
+                                    </div>
+                                    <div class="col-md-6">
+                                            <em>Versión </em>
+                                            <select
+                                            chosen
+                                            allow-single-deselect="true"
+                                            placeholder-text-single="'Seleccione Version'"
+                                            no-results-text="'Tough luck'"
+                                            ng-model="srzVersion"
+                                            ng-options = "item as item.temporada_version for item in items3 track by item.id"
+                                            style="width:200px;">
+                                            <option value="">Seleccione Versión</option>
+                                            </select>
+                                    </div>         
+                            </div>  
+
+                           <a ng-click="changeData()" href="javascript:void(0);" class="btn btn-primary pull-right" style="margin-bottom: 0px;">Buscar</a>
+                           </form>
+
+                            <!-- ng-options="value for value in optionsFromQuery" -->
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<table datatable="" dt-options="dtOptions" dt-columns="dtColumns" dt-instance="dtInstance">
+</table>
+
+<!-- <uib-tabset>
+    <uib-tab>
+        <div class="container">          
+            <div class="row">
+                <div class="col-sm-11"  style="background-color: white; padding: 10px">
+                    <div class="">
+                    </div>
+                    <div>                
+                    <br>
+                     <a ng-click="reloadData()" href="javascript:void(0);" class="btn btn-primary " style="margin-bottom: 0px;">Buscar</a>
+
+                     <button ng-click="changeData()">
+                     Change data
+                     </button>
+                    <table datatable="" dt-options="dtOptions" dt-columns="dtColumns" class="row-border hover pointer" dt-instance="dtInstance" width="100%"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </uib-tab>
+</uib-tabset> -->
+<hr>

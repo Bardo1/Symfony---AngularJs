@@ -1,0 +1,55 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-6 col-md-6">
+        <h2>Mantenedor Zhs</h2>
+        <ol class="breadcrumb">
+            <li>
+                 <a ui-sref="index.zhsInicial">zhs Inicial</a>
+            </li>
+            <li>
+                <strong>Agregar Zhs</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-6 col-md-6">
+       <a class="btn-sm pull-right" ui-sref="index.zhsInicial" style="margin-top: 40px;height: 31px;">
+         <i class="fa fa-level-up" aria-hidden="true"></i> Volver
+      </a>  
+    </div>
+</div>
+<br>
+
+<div class="panel panel-default">
+  <div class="ibox-title">
+        <h5>Agregar zhs
+        </h5>
+    </div>
+<div class="container-fluid">
+    <div class="col-lg-12 col-md-12 col-sm-12 ">
+            <div>
+                <div class="ibox-content wizard">
+                    <div class="steps clearfix">
+                        <ul>
+                            <li ui-sref-active="current">
+                                <a ui-sref="index.wizard.step_one" class="btn-default disabled" disabled readonly><span>1</span> Producto </a>
+                            </li>
+                            <li ui-sref-active="current">
+                                <a ui-sref="index.wizard.step_two" class="btn-default disabled" disabled readonly><span>2</span> Ubicación </a>
+                            </li>
+                            <li ui-sref-active="current">
+                                <a ui-sref="index.wizard.step_three" class="btn-default" disabled readonly><span>3</span> Código</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="wizard">
+                        <div class="content">
+                            <form name="userForm" ng-submit="agregarNuevoSac()" class="p-lg">
+                            <!-- aca es donde van los formularios -->
+                                <div id="form-views" ui-view></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+</div>

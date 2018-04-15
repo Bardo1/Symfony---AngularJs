@@ -1,0 +1,139 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-6 col-md-6">
+        <h2>Mantenedor Rubro</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a ui-sref="index.rubroInicial">Rubro Inicial</a>
+            </li>
+            <li class="active">
+                <strong>Agregar Rubro</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-6 col-md-6">
+       <a class="btn-sm pull-right" ui-sref="index.rubroInicial" style="margin-top: 40px;height: 31px;">
+         <i class="fa fa-level-up" aria-hidden="true"></i> Volver
+      </a>  
+    </div>
+</div>
+<br>
+
+<div class="panel panel-default">
+        <div class="ibox-title">
+            <h5>Agregar Rubro
+            </h5>
+        </div>
+<div class="container-fluid">
+<div class="col-lg-offset-2 col-lg-8 col-md-10 col-md-offset-1 col-sm-12 ">
+<div>
+                <div>
+                    <form  name="userForm" ng-submit="agregarNuevo()" style="padding-bottom:20px;" class="ng-pristine ng-valid" novalidate>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group" ng-class="{'has-error': userForm.rubCodigo.$invalid && !userForm.rubCodigo.$pristine }">
+                                <label>Código</label> 
+                                <input type="text" name="rubCodigo" class="form-control" ng-model="rubCodigo" placeholder="Código" maxlength="3"  onkeypress="return soloLetras(event)" required>
+                                <p ng-show="userForm.rubCodigo.$invalid && !userForm.rubCodigo.$pristine" class="help-block">El codigo es requerido, solo letras.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group" ng-class="{ 'has-error' : userForm.rubNombre.$invalid && !userForm.rubNombre.$pristine }">
+                                <label>Nombre</label> 
+                                <input type="text" name="rubNombre" ng-model="rubNombre"  placeholder="Nombre" class="form-control"  required>
+                                <p ng-show="userForm.rubNombre.$invalid && !userForm.rubNombre.$pristine" class="help-block">El nombre es requerido.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group" ng-class="{ 'has-error' : userForm.rubOrden.$invalid && !userForm.rubOrden.$pristine }">
+                                <label>Orden</label> 
+                                <input ng-model="rubOrden" min="0" name="rubOrden" type="number" placeholder="Orden" class="form-control" required>
+                                <p ng-show="userForm.rubOrden.$invalid && !userForm.rubOrden.$pristine" class="help-block">El orden es requerido.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group" ng-class="{ 'has-error' : userForm.rubCategoria.$invalid && !userForm.rubCategoria.$pristine }">
+                                <label>Categoria</label> 
+                                <input ng-model="rubCategoria" name="rubCategoria" type="text" placeholder="Categoria" class="form-control" required>
+                                <p ng-show="userForm.rubCategoria.$invalid && !userForm.rubCategoria.$pristine" class="help-block">La categoria es requerida.</p>
+                                </div>  
+                            </div>  
+                        </div>               
+                       <!-- col-lg-offset-2 col-lg-8 col-md-10 col-md-offset-1 col-sm-12 -->  
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group" ng-class="{ 'has-errors': userForm.rubSector.$invalid && !rubSector.$pristine , 'no-errors' : userForm.rubSector.$valid}">
+                                <label>Sector</label>   
+                                <select 
+                                chosen
+                                class="form-control"
+                                data-ng-model="rubSector1" 
+                                ng-required="true" 
+                                name="rubSector"
+                                allow-single-deselect="true" 
+                                placeholder-text-single="'Seleccione Sector'"
+                                ng-options="item as item.nombre for item in items track by item.id"
+                                ng-change="listarChosenComunas()">
+                                <option value="" selected>Seleccione Sector</option> 
+                                </select>
+                                </div>                                          
+                                <div class="error-container" ng-show="userForm.rubSector.$dirty && userForm.rubSector.$invalid && !userForm.rubSector.$pristine" ng-messages="userForm.rubSector.$error">                   
+                                 <div class="error" ng-message="required" style="color: #a94442;">
+                                    El sector es requerido.
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                                <div class="form-inline">
+                                <label>Activo</label>                                 
+                                <input type="checkbox" name="rubActivo" ng-model="rubActivo" class="form-control" value="false" style="width: 100px;height: 18px;">
+                                </div>                 
+                                <br>
+                                <br>
+                                <div class="ibox-footer">
+                                    <div class="form-inline">
+                                        <button type="submit" href="javascript:void(0);" 
+                                        class="btn btn-primary pull-right" 
+                                        ng-disabled="userForm.$invalid" 
+                                        >
+                                        <strong>Agregar Nuevo</strong>
+                                        </button>
+                                        <button ui-sref="index.rubroInicial" 
+                                        class="btn btn-primary pull-left"    
+                                        >
+                                        <strong>Volver</strong>
+                                        </button>
+                                    </div>                                      
+                                </div>
+                                <br>
+                                <br>
+
+                    </form>
+                </div>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+    function soloLetras(e){
+       key = e.keyCode || e.which;
+       tecla = String.fromCharCode(key).toLowerCase();
+       letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+       especiales = "8-37-39-46";
+
+       tecla_especial = false
+       for(var i in especiales){
+            if(key == especiales[i]){
+                tecla_especial = true;
+                break;
+            }
+        }
+
+        if(letras.indexOf(tecla)==-1 && !tecla_especial){
+            return false;
+        }
+    }
+</script>

@@ -1,0 +1,49 @@
+# app/config/security.yml
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
+
+    role_hierarchy:
+        ROLE_ADMIN:       [ROLE_NORMAS,ROLE_USER]
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username
+    firewalls:
+        main:
+            access_denied_url: /login_inicial?error=3
+            pattern: ^/
+            form_login:
+                provider: fos_userbundle
+                csrf_provider: security.csrf.token_manager
+                login_path: login_inicial
+                check_path: fos_user_security_check
+                # Customize success handler here            
+                #always_use_default_target_path: true
+                #default_target_path: /Compania/#!/BusquedaDePropuestas
+                #Login incorrecto
+                failure_path: /login_inicial?error=1
+                #El usuario intento ingresar a una pagina no permitida
+                login_path: /login_inicial?error=2
+                #csrf_token_generator: security.csrf.token_manager
+                #failure_forward: true
+            logout:
+                #el usuario cierra session
+                target: /login_inicial
+                #target: %logout.target%  
+            logout:       true           
+            anonymous:    true
+
+    access_control:
+
+        - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login_inicial, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/registro, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/reset, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/reset, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/mensajeReset, roles: ROLE_ADMIN }
+        - { path: ^/admin/, roles: ROLE_ADMIN }
+

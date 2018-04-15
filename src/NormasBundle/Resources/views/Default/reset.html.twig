@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html ng-app="inspinia">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title page-title>Restablecer contraseña</title>
+    <link href="{{ app.request.basepath }}/css/bootstrap.min.css" rel="stylesheet">
+    <link id="loadBefore" href="{{ app.request.basepath }}/css/style.css" rel="stylesheet">
+</head>
+<style type="text/css">
+    body {
+    background-image: url({{ app.request.basepath }}/imagenes/fondo8.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+</style>
+
+<body>
+<div class="loginColumns animated fadeInDown">
+<div class="ibox-content">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{ app.request.basepath }}/imagenes/ministe.png" class="img-responsive img-rounded" style="width: 400px;"/>
+            <h2 class="font-bold">Bienvenido a proyecto Normas </h2>
+            <p>
+                El Comité de Seguros del Agro, “Agroseguros”, es una entidad creada por el Consejo de CORFO el año 2000, con la finalidad de desarrollar y promover los Seguros para el Agro, y administrar un Subsidio del Estado para el copago de las primas de los Seguros Agropecuarios. Los recursos para el pago de los subsidios y gastos operacionales del Comité, provienen del presupuesto del Ministerio de Agricultura y son traspasados anualmente a CORFO mediante un Convenio de Transferencia de Fondos.
+            </p>
+           
+        </div>
+        <div class="col-md-6">
+            <h2 class="text-center"><i class="glyphicon glyphicon-envelope"> Restablecer contraseña</i></h2>
+            <div class="ibox-content">
+
+            <div>
+	            	<form action="{{ path('enviarEmail') }}" method="POST" class="fos_user_resetting_request center-block">
+					  <div class="row">
+					    <div class="form-group">
+					    <div ></div>
+                            <div >
+					        <label for="username">Email o Nombre de Usuario</label>
+					        <input type="text" id="username" name="username" class="form-control center-block" required="required" />
+					    </div>
+					    </div>
+                      </div>
+                      <br>
+					    <div class="row">
+					      <div class="form-group">
+					      <div></div>
+                            <div>
+                         <input class="btn btn-primary block full-width m-b" type="submit" id="_submit" name="_submit" value="Enviar" />
+                        </div>
+                        </div>
+                       </div>
+
+                         <div class="row">
+    <div class="form-group">
+    <div>
+        <a class="btn btn-sm btn-white btn-block" href="{{ path('login_inicial') }}">Volver a Login</a>
+    </div>
+    </div>
+</div>
+					</form>
+            </div>
+<br>
+<br>
+
+            </div>
+           </div>
+        </div>
+    </div>
+
+</div>
+</div>
+
+</body>
+</html>

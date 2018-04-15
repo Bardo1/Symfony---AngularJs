@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html ng-app="inspinia">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Page title set in pageTitle directive -->
+    <title page-title></title>
+    <!-- Font awesome -->
+    <link href="{{ app.request.basepath }}/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <!-- Bootstrap and Fonts -->
+    <link href="{{ app.request.basepath }}/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Main Inspinia CSS files-->
+    <link rel="stylesheet" href="{{ app.request.basepath }}/css/animate.css">
+    <link rel="stylesheet" href="{{ app.request.basepath }}/css/plugins/chosen/chosen.css">
+    <link rel="stylesheet" href="{{ app.request.basepath }}/css/plugins/chosen/chosen.min.css">
+    <link rel="stylesheet" href="{{ app.request.basepath }}/css/plugins/sweetalert/sweetalert.css">
+    <link rel="stylesheet" href="{{ app.request.basepath }}/css/plugins/switchery/switchery.css">
+    <link rel="stylesheet" href="{{ app.request.basepath }}/css/plugins/datepicker/angular-datepicker.css">
+    <link rel="stylesheet" href="{{ app.request.basepath }}/css/plugins/daterangepicker/daterangepicker-bs3.css">
+    <link rel="stylesheet" href="{{ app.request.basepath }}/css/plugins/steps/jquery.steps.css">
+    <link rel="stylesheet" href="{{ app.request.basepath }}/css/plugins/iCheck/custom.css">
+    <link id="loadBefore"  href="{{ app.request.basepath }}/css/style.css" rel="stylesheet">
+    <link id="loadBefore"  href="{{ app.request.basepath }}/css/plugins/blockui/angular-block-ui.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css"  href="{{ app.request.basepath }}/dist/tooltips/angular-tooltips.min.css">
+    <link rel="stylesheet" type="text/css"  href="{{ app.request.basepath }}/css/miestilo.css">
+    <!-- <link rel="stylesheet" href="{{ app.request.basepath }}/css/plugins/dataTables/buttons.dataTables.min.css">-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="{{ app.request.basepath }}/css/plugins/dataTables/dataTables.tableTools.css"> -->
+    <!-- <script src="{{ app.request.basepath }}/js/plugins/dataTables/dataTables.tableTools.js"></script> -->
+    <!-- <link rel="stylesheet" href="{{ app.request.basepath }}/css/plugins/switchery/switchery.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css"> -->
+    <!-- <script src="{{ app.request.basepath }}/js/plugins/dataTables/angular-datatables.buttons.js"></script> -->
+
+
+
+</head>
+<!-- ControllerAs syntax -->
+<!-- Main controller with serveral data used in Inspinia theme on diferent view -->
+<body ng-controller="MainCtrl as main" >
+<!-- Main view  -->
+
+<div ui-view>
+</div>
+</body>
+<!-- RoutingJs -->
+<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+<!-- jQuery and Bootstrap -->
+<script src="{{ app.request.basepath }}/js/jquery/jquery-2.1.1.min.js"></script>
+<script src="{{ app.request.basepath }}/js/plugins/jquery-ui/jquery-ui.js"></script>
+<!-- MetsiMenu -->
+<script src="{{ app.request.basepath }}/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<!-- SlimScroll -->
+<script src="{{ app.request.basepath }}/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<!-- Peace JS -->
+<script src="{{ app.request.basepath }}/js/plugins/pace/pace.min.js"></script>
+<!-- Custom and plugin javascript -->
+<script src="{{ app.request.basepath }}/js/inspinia.js"></script>
+<!-- Main Angular scripts-->
+<script src="{{ app.request.basepath }}/js/angular/angular.min.js"></script>
+<script src="{{ app.request.basepath }}/js/angular/angular-sanitize.js"></script>
+<script src="{{ app.request.basepath }}/js/plugins/oclazyload/dist/ocLazyLoad.min.js"></script>
+<script src="{{ app.request.basepath }}/js/ui-router/angular-ui-router.min.js"></script>
+<script src="{{ app.request.basepath }}/js/bootstrap/ui-bootstrap-tpls-0.12.0.min.js"></script>
+<script src="{{ app.request.basepath }}/js/angular-translate/angular-translate.min.js"></script>
+<script src="{{ app.request.basepath }}/js/plugins/angular-idle/angular-idle.js"></script>
+<!-- Anglar App Script -->
+<script src="{{ app.request.basepath }}/js/plugins/dataTables/angular-datatables.min.js"></script>
+<script src="{{ app.request.basepath }}/js/plugins/dataTables/jquery.dataTables.min.js"></script>
+<!-- Los Tabletools -->
+<script src="{{ app.request.basepath }}/js/plugins/dataTables/dataTables.buttons.js"></script>
+<script src="{{ app.request.basepath }}/js/plugins/dataTables/buttons.colVis.js"></script>
+<script src="{{ app.request.basepath }}/js/plugins/dataTables/buttons.flash.js"></script>
+<script src="{{ app.request.basepath }}/js/plugins/dataTables/buttons.html5.js"></script>
+<script src="{{ app.request.basepath }}/js/plugins/dataTables/buttons.print.js"></script>
+<!-- los segundos -->
+<script src="https://cdn.bootcss.com/angular-datatables/0.6.2/plugins/buttons/angular-datatables.buttons.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.colVis.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+<script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-route.js"></script>
+<script src="{{ app.request.basepath }}/js/config.js"></script>
+<script src="{{ app.request.basepath }}/js/directives.js"></script>
+<script src="{{ app.request.basepath }}/js/controllers.js"></script>
+<script src="{{ app.request.basepath }}/js/controladores/companiaCtrl.js"></script> 
+<script src="{{ app.request.basepath }}/js/controladores/sectorCtrl.js"></script> 
+<script src="{{ app.request.basepath }}/js/controladores/rubroCtrl.js"></script>
+<script src="{{ app.request.basepath }}/js/controladores/sacCtrl.js"></script> 
+<script src="{{ app.request.basepath }}/js/controladores/resolucionCtrl.js"></script>
+<script src="{{ app.request.basepath }}/js/controladores/temporadaCtrl.js"></script>
+<script src="{{ app.request.basepath }}/js/controladores/zhsCtrl.js"></script> 
+<script src="{{ app.request.basepath }}/js/controladores/comunaCtrl.js"></script>
+<script src="{{ app.request.basepath }}/js/controladores/regionCtrl.js"></script>
+<script src="{{ app.request.basepath }}/js/controladores/variedadCtrl.js"></script>
+<script src="{{ app.request.basepath }}/js/controladores/productoCtrl.js"></script>
+<script src="{{ app.request.basepath }}/js/controladores/vectorCtrl.js"></script>
+<script src="{{ app.request.basepath }}/js/controladores/primaCtrl.js"></script>
+<!-- script para chosen datatable y demases -->
+<!-- Mainly scripts -->
+<script src="{{ app.request.basepath }}/js/plugins/jeditable/jquery.jeditable.js"></script>
+<!-- Data Tables -->
+<script src="{{ app.request.basepath }}/js/plugins/steps/jquery.steps.min.js"></script> 
+<!-- Chosen -->
+<script src="{{ app.request.basepath }}/js/plugins/chosen/chosen.jquery.js"></script>
+<script src="{{ app.request.basepath }}/js/plugins/chosen/chosen.js"></script>
+
+<script src="{{ app.request.basepath }}/js/plugins/sweetalert/sweetalert-dev.js"></script>
+<script src="{{ app.request.basepath }}/js/plugins/sweetalert/SweetAlert.js"></script>
+
+<script src="{{ app.request.basepath }}/js/plugins/blockui/angular-block-ui.min.js"></script>
+<!-- para el rango de fechas -->
+<script src="{{ app.request.basepath }}/js/plugins/moment/moment.min.js"></script>
+<script src="{{ app.request.basepath }}/js/plugins/daterangepicker/angular-daterangepicker.js"></script>
+<script src="{{ app.request.basepath }}/js/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- para las fechas -->
+<script src="{{ app.request.basepath }}/js/plugins/datepicker/angular-datepicker.js"></script>
+<script src="{{ app.request.basepath }}/js/angular/angular-animate.js"></script>
+<!-- para los ruts -->
+<script src="{{ app.request.basepath }}/js/plugins/rut/angular-rut.min.js"></script>
+
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular-resource.js"></script>
+<script src="{{ app.request.basepath }}/js/controladores/tableChosenCtrl.js"></script>
+
+</html>

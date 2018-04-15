@@ -1,0 +1,123 @@
+normas_gen_prima_api:
+    resource: "@NormasBundle/Controller/GenPrimaRESTController.php"
+    type:   rest
+    prefix:   /api
+
+normas_gen_sac_rubro_zhs_temporada_api:
+    resource: "@NormasBundle/Controller/GenSacRubroZhsTemporadaRESTController.php"
+    type:   rest
+    prefix:   /api
+
+normas_gen_variedad_api:
+    resource: "@NormasBundle/Controller/GenVariedadRESTController.php"
+    type:   rest
+    prefix:   /api
+
+normas_gen_producto_api:
+    resource: "@NormasBundle/Controller/GenProductoRESTController.php"
+    type:   rest
+    prefix:   /api
+
+normas_ns_zhs_variedad_api:
+    resource: "@NormasBundle/Controller/NsZhsVariedadRESTController.php"
+    type:   rest
+    prefix:   /api
+
+normas_gen_compania_api:
+    resource: "@NormasBundle/Controller/GenCompaniaRESTController.php"
+    type:   rest
+    prefix:   /api
+
+normas_gen_sac_rubro_zhs_api:
+    resource: "@NormasBundle/Controller/GenSacRubroZhsRESTController.php"
+    type:   rest
+    prefix:   /api
+
+normas_ns_valores_api:
+    resource: "@NormasBundle/Controller/NsValoresRESTController.php"
+    type:   rest
+    prefix:   /api
+
+normas_gen_sac_api:
+    resource: "@NormasBundle/Controller/GenSacRESTController.php"
+    type:   rest
+    prefix:   /api
+
+normas_ns_zhs_api:
+    resource: "@NormasBundle/Controller/NsZhsRESTController.php"
+    type:   rest
+    prefix:   /api
+
+normas_gen_comuna_api:
+    resource: "@NormasBundle/Controller/GenComunaRESTController.php"
+    type:   rest
+    prefix:   /api
+
+normas_gen_temporada_api:
+    resource: "@NormasBundle/Controller/GenTemporadaRESTController.php"
+    type:   rest
+    prefix:   /api
+
+normas_gen_region_api:
+    resource: "@NormasBundle/Controller/GenRegionRESTController.php"
+    type:   rest
+    prefix:   /api
+
+normas_ns_vector_api:
+    resource: "@NormasBundle/Controller/NsVectorRESTController.php"
+    type:   rest
+    prefix:   /api
+
+normas_gen_resolucion_api:
+    resource: "@NormasBundle/Controller/GenResolucionRESTController.php"
+    type:   rest
+    prefix:   /api
+
+normas_gen_temporada_version_api:
+    resource: "@NormasBundle/Controller/GenTemporadaVersionRESTController.php"
+    type:   rest
+    prefix:   /api
+
+normas_gen_sector_api:
+    resource: "@NormasBundle/Controller/GenSectorRESTController.php"
+    type:   rest
+    prefix:   /api
+
+normas_gen_rubro_api:
+    resource: "@NormasBundle/Controller/GenRubroRESTController.php"
+    type:   rest
+    prefix:   /api
+
+normas_gen_rubro:
+    resource: "@NormasBundle/Controller/GenRubroController.php"
+    type:     annotation
+
+normas:
+    resource: "@NormasBundle/Resources/config/routing.yml"
+    prefix:   /
+
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile
+
+NelmioApiDocBundle:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix:   /api/doc
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"

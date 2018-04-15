@@ -1,0 +1,124 @@
+<fieldset>
+                <form name="signupForm" ng-submit="processForm()" class="p-lg">       
+                        <div class="ibox-content">        
+                               <div class="row">                      
+                                    <div class="col-md-6">
+                                        <div class="form-group" ng-class="{ 'has-errors' : userForm.zhsRegion.$invalid && !userForm.zhsRegion.$pristine , 'no-errors' : userForm.zhsRegion.$valid}">
+                                        <label>Región</label>
+                                        <select 
+                                        chosen
+                                        class="form-control"
+                                        data-ng-model = "zhsRegion1" 
+                                        ng-required = "true" 
+                                        name = "zhsRegion"
+                                        allow-single-deselect = "true" 
+                                        placeholder-text-single = "'Seleccione Region'"
+                                        ng-options="item as item.nombre for item in items5 track by item.id" 
+                                        ng-change="listarChosenComunas()">
+                                        <option value="" selected>Seleccione Región</option> 
+                                        </select>
+                                        </div>
+                                        <div class="error-container" ng-show="userForm.zhsRegion.$dirty && userForm.zhsRegion.$invalid && !userForm.zhsRegion.$pristine" ng-messages="userForm.zhsRegion.$error">                       
+                                         <div class="error" ng-message="required" style="color: #a94442;">
+                                            La región es requerida.
+                                        </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group" ng-class="{ 'has-errors' : userForm.zhsComuna.$dirty && userForm.zhsComuna.$invalid && !userForm.zhsComuna.$pristine,'no-errors' : userForm.zhsComuna.$valid}">
+                                        <label>Comuna</label>
+                                        <select     
+                                        chosen 
+                                        class="form-control"     
+                                        data-ng-model = "zhsComuna1" 
+                                        ng-required = "true" 
+                                        name = "zhsComuna"
+                                        allow-single-deselect = "true" 
+                                        placeholder-text-single = "'Seleccione Comuna'"
+                                        ng-options="item as item.nombre for item in items6 track by item.id" 
+                                        ng-change="changeData()">
+                                        <option value="" selected>Seleccione Comuna</option>
+                                        </select>
+                                        </div> 
+                                        <div class="error-container" ng-show="userForm.zhsComuna.$dirty && userForm.zhsComuna.$invalid && !userForm.zhsComuna.$pristine" ng-messages="userForm.zhsComuna.$error">
+                                        <div class="error" ng-message="required" style="color: #a94442;">
+                                        La comuna es requerida.
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-offset-6 col-md-6">
+                                        <div class="pull-right">
+                                         <td>Agregar Sac / Salir </td>      
+                                         <a class="btn btn-primary" ui-sref="index.sacAgregar">
+                                         <i class="fa fa-plus"></i>
+                                         </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <br>
+                                <br>
+                                <br>           
+
+<h2 align="center">Tabla 1 : Lista de Sacs seleccionados a ingresar</h2>
+<table  class="table table-condensed table-striped table-bordered" class="row-border hover pointer table table-striped table-bordered cell-border compact" cellspacing="0" width="100%">
+     <thead>
+        <tr> 
+            <th style="display:none;"></th> 
+            <th>Codigo</th> 
+            <th>Sac</th>
+            <th>Region</th>  
+            <th>Comuna</th>
+            <th>Rubro</th>
+            <th>Borrar</th> 
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="tablaSacs in tablaSacs track by $index">
+             <th style="display:none;"></th> 
+             <td>{{tablaSacs.codigo }}</td> 
+             <td>{{tablaSacs.nombre }}</td>
+             <td>{{tablaSacs.region }}</td>
+             <td>{{tablaSacs.comuna }}</td>
+             <td>{{tablaSacs.rubro }} </td>
+             <td><button class="btn btn-default" ng-click="deleteRqst(tablaSacs.id,tablaSacs.idSrz)" type="submit">X</button></td>
+        </tr>      
+    </tbody>
+</table>
+
+    <h2 align="center">Tabla 2 : Selección de Sacs según Región y Comuna</h2>
+    <table datatable="" class="row-border hover pointer table table-striped table-bordered cell-border compact" dt-options="dtOptions" dt-columns="dtColumns" dt-instance="dtInstance">
+    </table>
+                    <br>  
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>      
+             </div>           
+       </div>
+    </div>
+    <br>
+
+    <button type="submit" ng-click="volverUno()" 
+    class="btn btn-default" 
+    style="margin-bottom: 0px;">
+    <strong>Previo</strong>
+    </button>
+
+    <button type="submit" ng-click="pasarAlTres()"  
+    class="btn btn-primary" 
+    ng-disabled="!tablaNoVacia()" 
+    style="margin-bottom: 0px;">
+    <strong>Siguiente</strong>
+    </button>  
+    </form>
+</fieldset>

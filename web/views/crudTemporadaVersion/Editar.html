@@ -1,0 +1,99 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Editar Temporada Versión</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a ui-sref="index.temporadaversionInicial">Temporada Versión Inicial</a>
+            </li>
+            <li>
+                <a>Editar Temporada Versión</a>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+    </div>
+</div>
+<br>
+
+<div class="wrapper wrapper-content animated fadeInRight ng-scope" style="width: 820px;">
+<div class="row">
+<div class="col-lg-offset-2 col-lg-12 col-md-12 col-xs-6 ">
+<div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <form  name="userForm" ng-submit="modificarTemporadaVersion()" class="ng-pristine ng-valid" novalidate>
+                                <div class="form-group" ng-class="{'has-error': userForm.secCodigo.$invalid && !userForm.secCodigo.$pristine }">
+                                <label>Código</label> 
+                                <input type="text" name="secCodigo" class="form-control" ng-model="secCodigo" placeholder="Código" maxlength="2"  style="width: 326px;" onkeypress="return soloLetras(event)" required>
+                                <p ng-show="userForm.secCodigo.$invalid && !userForm.secCodigo.$pristine" class="help-block">El codigo es requerido, solo letras.</p>
+                                </div>
+
+                                <div class="form-group" ng-class="{ 'has-error' : userForm.secNombre.$invalid && !userForm.secNombre.$pristine }">
+                                <label>Nombre</label> 
+                                <input type="text" name="secNombre" ng-model="secNombre"  placeholder="Nombre" class="form-control" style="width: 326px;" required>
+                                <p ng-show="userForm.secNombre.$invalid && !userForm.secNombre.$pristine" class="help-block">El nombre es requerido.</p>
+                                </div>
+
+                                <div class="form-group" ng-class="{ 'has-error' : userForm.secOrden.$invalid && !userForm.secOrden.$pristine }">
+                                <label>Orden</label> 
+                                <input ng-model="secOrden" name="secOrden" type="number" placeholder="numero de orden" class="form-control" style="width: 126px;" required>
+                                <p ng-show="userForm.secOrden.$invalid && !userForm.secOrden.$pristine" class="help-block">El orden es requerido.</p>
+                                </div>
+
+                                <div class="form-inline ng-pristine ng-valid" ng-class="{ 'has-error' : userForm.secTipoRiesgo.$invalid && !userForm.secTipoRiesgo.$pristine && userForm.secNombreTipoRiesgo.$invalid && !userForm.secNombreTipoRiesgo.$pristine }">
+
+                                <label>Tipo riesgo</label> 
+                                <input ng-model="secTipoRiesgo" name="secTipoRiesgo" type="number" placeholder="numero" class="form-control" style="width: 126px;" required>
+                                <p ng-show="userForm.secTipoRiesgo.$invalid && !userForm.secTipoRiesgo.$pristine" class="help-block">El tipo riesgo es requerido.</p>
+
+                                &nbsp;&nbsp;<label>Nombre tipo riesgo</label> 
+                                <input ng-model="secNombreTipoRiesgo" name="secNombreTipoRiesgo" type="text" placeholder="nombre" class="form-control" style="width: 326px;" required>
+                                <p ng-show="userForm.secNombreTipoRiesgo.$invalid && !userForm.secNombreTipoRiesgo.$pristine" class="help-block">
+                                El nombre tipo riesgo es requerido.</p>
+                                </div>
+                                <br>
+                                <div class="form-inline">
+                                <label>Activo</label> 
+                                <input type="checkbox" name="tvActivo" ng-model="tvActivo" class="form-control" value="false" style="width: 100px;height: 18px;">
+                                </div>
+                                <br>
+                                <div class="form-inline">
+                                    <button ui-sref="index.temporadaversionInicial" 
+                                    class="btn btn-primary pull-left"   
+                                    style="margin-bottom: 0px;">
+                                    <strong>Volver</strong>
+                                    </button>
+                                    <button type="submit" href="javascript:void(0);" 
+                                    class="btn btn-primary pull-right" 
+                                    ng-disabled="userForm.$invalid" 
+                                    style="margin-bottom: 0px;">
+                                    <strong>Modificar Temporada Versión</strong>
+                                    </button>                                    
+                                </div>
+                                <br>
+                                <br>
+                    </form>
+                </div>
+</div>
+</div>
+</div>
+
+<script>
+    function soloLetras(e){
+       key = e.keyCode || e.which;
+       tecla = String.fromCharCode(key).toLowerCase();
+       letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+       especiales = "8-37-39-46";
+
+       tecla_especial = false
+       for(var i in especiales){
+            if(key == especiales[i]){
+                tecla_especial = true;
+                break;
+            }
+        }
+
+        if(letras.indexOf(tecla)==-1 && !tecla_especial){
+            return false;
+        }
+    }
+</script>

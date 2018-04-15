@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Genrubro</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idrubro</th>
+                <td>{{ genRubro.idrubro }}</td>
+            </tr>
+            <tr>
+                <th>Idsector</th>
+                <td>{{ genRubro.idsector }}</td>
+            </tr>
+            <tr>
+                <th>Rubro</th>
+                <td>{{ genRubro.rubro }}</td>
+            </tr>
+            <tr>
+                <th>Ordenrubro</th>
+                <td>{{ genRubro.ordenrubro }}</td>
+            </tr>
+            <tr>
+                <th>Idcategoria</th>
+                <td>{{ genRubro.idcategoria }}</td>
+            </tr>
+            <tr>
+                <th>Activo</th>
+                <td>{{ genRubro.activo }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('genrubro_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('genrubro_edit', { 'idrubro': genRubro.idrubro }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

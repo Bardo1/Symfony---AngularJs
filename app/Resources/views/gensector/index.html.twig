@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Gensectors list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Sector</th>
+                <th>Ordensector</th>
+                <th>Descripcioncantidadasegurada</th>
+                <th>Cantidadasegurada</th>
+                <th>Idtiporiesgo</th>
+                <th>Nombretiporiesgo</th>
+                <th>Activo</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for genSector in genSectors %}
+            <tr>
+                <td><a href="{{ path('gensector_show', { 'id': genSector.id }) }}">{{ genSector.id }}</a></td>
+                <td>{{ genSector.sector }}</td>
+                <td>{{ genSector.ordensector }}</td>
+                <td>{{ genSector.descripcioncantidadasegurada }}</td>
+                <td>{{ genSector.cantidadasegurada }}</td>
+                <td>{{ genSector.idtiporiesgo }}</td>
+                <td>{{ genSector.nombretiporiesgo }}</td>
+                <td>{{ genSector.activo }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('gensector_show', { 'id': genSector.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('gensector_edit', { 'id': genSector.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('gensector_new') }}">Create a new genSector</a>
+        </li>
+    </ul>
+{% endblock %}

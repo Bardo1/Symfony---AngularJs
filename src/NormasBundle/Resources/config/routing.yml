@@ -1,0 +1,81 @@
+normas_homepage:
+    path:     /
+    defaults: { _controller: NormasBundle:Default:index }
+
+login_inicial:
+    path:     /login_inicial
+    defaults: { _controller: NormasBundle:Default:login }
+
+buscanombre:
+    path:     /buscanombre
+    defaults: { _controller: NormasBundle:Default:buscanombre }
+
+registro:
+    path:     /registro
+    defaults: { _controller: NormasBundle:Default:registro }
+
+reestablecer:
+    path:     /reestablecer
+    defaults: { _controller: NormasBundle:Reset:reestablecer }
+
+enviarEmail:
+    path:     /enviarEmail
+    defaults: { _controller: NormasBundle:Reset:sendEmail }
+
+check_email:
+    path:     /check_email
+    defaults: { _controller: NormasBundle:Reset:checkEmail }
+
+mensajeReset:
+    path:     /mensajeReset
+    defaults: { _controller: NormasBundle:Default:mensajeReset }
+
+rutaConfirma:
+    path:     /rutaConfirma
+    defaults: { _controller: NormasBundle:Default:confirma }
+
+informe_sacrubrozhs:
+    path:     /informe_sacrubrozhs
+    defaults: { _controller: NormasBundle:GenSacRubroZhsREST:informeDatos }
+
+busca_sector_rubro:
+    path:     /busca_sector_rubro
+    defaults: { _controller: NormasBundle:GenSacRubroZhsREST:buscaSectorRubro }
+    options:
+        expose: true
+
+busca_rubros:
+    path:     /busca_rubros
+    defaults: { _controller: NormasBundle:GenSacRubroZhsREST:buscaRubros }
+    options:
+        expose: true
+        
+busca_sacs:
+    path:     /busca_sacs
+    defaults: { _controller: NormasBundle:GenSacRubroZhsREST:buscaSacs }
+
+busca_resolucion:
+    path:     /busca_resolucion
+    defaults: { _controller: NormasBundle:GenResolucionREST:buscaResolucion }
+
+busca_temporada:
+    path:     /busca_temporada
+    defaults: { _controller: NormasBundle:GenTemporadaREST:buscaTemporada }
+
+busca_temporada_version:
+    path:     /busca_temporada_version
+    defaults: { _controller: NormasBundle:GenTemporadaREST:buscaTemporadaVersion }
+
+busca_idSrzTemporada:
+    path:     /busca_idSrzTemporada
+    defaults: { _controller: NormasBundle:GenSacRubroZhsREST:buscaidSrzTemporada }
+
+lista_primas:
+    path:     /lista_primas
+    defaults: { _controller: NormasBundle:GenPrimaREST:listaPrimas }
+
+listaprueba:
+    path:     /listaprueba
+    defaults: { _controller: NormasBundle:Default:list }
+
+

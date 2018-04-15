@@ -1,0 +1,108 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-6 col-md-6">
+        <h2>Mantenedor Variedad</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a ui-sref="index.variedadInicial">Variedad Inicial</a>
+            </li>
+            <li>
+                <strong>Agregar Variedad</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-6 col-md-6">
+       <a class="btn-sm pull-right" ui-sref="index.variedadInicial" style="margin-top: 40px;height: 31px;">
+         <i class="fa fa-level-up" aria-hidden="true"></i> Volver
+      </a>  
+    </div>
+</div>
+<br>
+
+<div class="panel panel-default">
+        <div class="ibox-title">
+            <h5>Agregar Variedad
+            </h5>
+        </div>
+<div class="container-fluid">
+<div class="col-lg-offset-2 col-lg-8 col-md-10 col-md-offset-1 col-sm-12 ">
+<div>
+                <div>
+                    <form  name="userForm" ng-submit="agregarNuevo()" style="padding-bottom:20px;" class="ng-pristine ng-valid" novalidate>
+                    <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group" ng-class="{'has-error': userForm.varCod.$invalid && !userForm.varCod.$pristine }">
+                                <label>Código</label> 
+                                <input type="number" name="varCod" class="form-control" ng-model="varCod" placeholder="Código" required>
+                                <p ng-show="userForm.varCod.$invalid && !userForm.varCod.$pristine" class="help-block">
+                                El código es requerido</p>
+                                </div>
+                            </div>
+                                <div class="col-md-6">
+                                <div class="form-group" ng-class="{ 'has-error' : userForm.varNom.$invalid && !userForm.varNom.$pristine }">
+                                <label>Nombre</label> 
+                                <input type="text" name="varNom" ng-model="varNom" placeholder="Nombre" class="form-control" required>
+                                <p ng-show="userForm.varNom.$invalid && !userForm.varNom.$pristine" class="help-block">El nombre es requerido.</p>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6"> 
+                                <label>Nueva fecha producto</label>  
+                                <div class="input-group date">  
+                                <input data-date-format="dd-mm-yyyy" class="form-control" name="varFech" ng-model="varFech"  placeholder="Fecha producto" default-view="year" min-view="date" max-view="year" date-time format="yyyy-MM-dd" auto-close="true" required >
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                </div>
+                                <p ng-show="userForm.varFech.$invalid && !userForm.varFech.$pristine" class="help-block">La nueva fecha producto es requerida</p>
+                        </div>
+                        <div class="col-md-6">
+                                    <div class="form-group" ng-class="{ 'has-errors' : userForm.varPro.$invalid && !varPro.$pristine , 'no-errors' : userForm.varPro.$valid}">
+                                    <label>Producto </label>
+                                    <select
+                                    style="visibility: visible;"
+                                    chosen
+                                    class="form-control"
+                                    allow-single-deselect="true"
+                                    placeholder-text-single="'Seleccione Sector'"
+                                    data-ng-model = "varPro1" 
+                                    ng-required = "true" 
+                                    name = "varPro"  
+                                    ng-options="item as item.nombre for item in items1 track by item.id">
+                                    <option value="" selected>Seleccione Producto</option> 
+                                    </select>
+                                    </div>                                                
+                                    <div class="error-container" ng-show="userForm.varPro.$dirty && userForm.varPro.$invalid && !userForm.varPro.$pristine" ng-messages="userForm.varPro.$error">                   
+                                    <div class="error" ng-message="required" style="color: #a94442;">
+                                        El sector es requerido.
+                                    </div>
+                                    </div>
+                                </div>
+                    </div>
+                                <br>
+                                <div class="form-inline">
+                                <label>Activo</label> 
+                                <input type="checkbox" name="varActivo" ng-model="varActivo" class="form-control" value="false" style="width: 100px;height: 18px;">
+                                </div>
+                                <br>
+                                <br>
+                                <div class="ibox-footer">
+                                <div class="form-inline">
+                                    <button ui-sref="index.variedadInicial" 
+                                    class="btn btn-primary pull-left"                          
+                                    style="margin-bottom: 0px;">
+                                    <strong>Volver</strong>
+                                    </button>
+                                    <button type="submit" href="javascript:void(0);" 
+                                    class="btn btn-primary pull-right" 
+                                    ng-disabled="userForm.$invalid" 
+                                    style="margin-bottom: 0px;">
+                                    <strong>Agregar nuevo</strong>
+                                    </button>                                    
+                                </div>
+                                </div>
+                                <br>
+                                <br>                                  
+                    </form>
+                </div>
+</div>
+</div>
+</div>

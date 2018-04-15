@@ -1,0 +1,127 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Editar Sac</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a ui-sref="index.sacInicial">Mantenedor Sac</a>
+            </li>
+            <li>
+                <a>Agregar Tabla</a>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+    </div>
+</div>
+<br>
+
+<div class="wrapper wrapper-content animated fadeInRight ng-scope"  style="width: 820px;
+">
+<div class="row">
+<div class="col-lg-offset-2 col-lg-12 col-md-12 col-xs-6">
+<div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <form  name="userForm" ng-submit="modificarZhsVariedad()" class="ng-pristine ng-valid" novalidate>
+                                <div class="form-group" ng-class="{'has-error': userForm.zvMoneda.$invalid && !userForm.zvMoneda.$pristine }">
+                                <label>Moneda</label> 
+                                <input type="text" name="zvMoneda" class="form-control" ng-model="zvMoneda" placeholder="Moneda" style="width: 326px;"  required>
+                                <p ng-show="userForm.zvMoneda.$invalid && !userForm.zvMoneda.$pristine" class="help-block">La moneda es requerida.</p>
+                                </div>
+
+                                <div class="form-group" ng-class="{ 'has-error' : userForm.zvUnidad.$invalid && !userForm.zvUnidad.$pristine }">
+                                <label>Unidad</label> 
+                                <input type="text" name="zvUnidad" ng-model="zvUnidad"  placeholder="Unidad" class="form-control" style="width: 326px;" required>
+                                <p ng-show="userForm.zvUnidad.$invalid && !userForm.zvUnidad.$pristine" class="help-block">La unidad es requerida.</p>
+                                </div>
+
+                                <br>                               
+                                <div class="form-inline">
+                                <label>Zhs </label>
+                                &nbsp;
+                                <select
+                                chosen
+                                allow-single-deselect="true"
+                                placeholder-text-single="'Seleccione Zhs'"
+                                no-results-text="'Tough luck'"
+                                ng-model="zvZhs" 
+                                ng-options="value for value in ZhsSelect"
+                                ng-change="listarChosenZhs()"
+                                style="width:200px;">
+                                <option value="">Seleccione zhs</option>
+                                </select> 
+                                </div>
+                                <br>
+                                <div class="form-inline">
+                                <label>Temporada versión</label>
+                                &nbsp;
+                                <select
+                                chosen
+                                allow-single-deselect="true"
+                                placeholder-text-single="'Seleccione Temporada Version'"
+                                no-results-text="'Tough luck'"
+                                ng-model="zvTemporadaVersion" 
+                                ng-options="value for value in TemporadaVersionSelect"
+                                ng-change="listarChosenTemporadaVersion()"
+                                style="width:200px;">
+                                <option value="">Seleccione Temporada versión</option>
+                                </select> 
+                                </div>
+                                <br>
+                                <div class="form-inline">
+                                <label>Variedad </label>
+                                &nbsp;
+                                <select
+                                chosen
+                                allow-single-deselect="true"
+                                placeholder-text-single="'Seleccione Variedad'"
+                                no-results-text="'Tough luck'"
+                                ng-model="zvVariedad" 
+                                ng-options="value for value in VariedadSelect"
+                                ng-change="listarChosenVariedad()"
+                                style="width:200px;">
+                                <option value="">Seleccione Variedad</option>
+                                </select> 
+                                </div>
+                                <br>
+                                <div class="form-inline">
+                                <label>Compañia </label>
+                                &nbsp;
+                                <select
+                                chosen
+                                allow-single-deselect="true"
+                                placeholder-text-single="'Seleccione Compañia'"
+                                no-results-text="'Tough luck'"
+                                ng-model="zvCompania" 
+                                ng-options="value for value in CompaniaSelect"
+                                ng-change="listarChosenCompania()"
+                                style="width:200px;">
+                                <option value="">Seleccione Compañia</option>
+                                </select> 
+                                </div>
+                                <br>
+                                <div class="form-inline">
+                                <label>Activo</label> 
+                                <input type="checkbox" name="zvActivo" ng-model="zvActivo" class="form-control" value="false" style="width: 100px;height: 18px;">
+                                </div>
+                                <br>
+                                <div class="form-inline">
+                                    <button ui-sref="index.zhsvariedadInicial" 
+                                    class="btn btn-sm btn-primary pull-left"                       
+                                    style="margin-bottom: 0px;">
+                                    <strong>Volver</strong>
+                                    </button>
+                                    <button type="submit" href="javascript:void(0);" 
+                                    class="btn btn-sm btn-primary pull-right" 
+                                    ng-disabled="userForm.$invalid" 
+                                    style="margin-bottom: 0px;">
+                                    <strong>Modificar Zhs Variedad</strong>
+                                    </button>                                    
+                                </div>
+                                <br>
+                                <br>
+                    </form>
+                </div>
+</div>
+</div>
+</div>
+

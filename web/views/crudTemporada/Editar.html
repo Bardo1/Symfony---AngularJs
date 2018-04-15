@@ -1,0 +1,87 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-6 col-md-6">
+        <h2>Mantenedor Temporada</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a ui-sref="index.temporadaInicial">Temporada Inicial</a>
+            </li>
+            <li>
+                <strong>Editar Temporada</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-6 col-md-6">
+       <a class="btn-sm pull-right" ui-sref="index.temporadaInicial" style="margin-top: 40px;height: 31px;">
+         <i class="fa fa-level-up" aria-hidden="true"></i> Volver
+      </a>  
+    </div>
+</div>
+<br>
+
+<div class="panel panel-default">
+                <div class="ibox-title">
+                    <h5>Editar Temporada
+                    </h5>
+                </div>
+<div class="container-fluid">
+<div class="col-lg-offset-2 col-lg-5 col-md-6 col-md-offset-1 col-sm-8 col-xs-9">
+<div>
+                    <form  name="userForm" ng-submit="modificarTemporada()" style="padding-bottom: 20px;" class="ng-pristine ng-valid" novalidate> 
+                                <div class="form-group" ng-class="{'has-error': userForm.temTemporada.$invalid && !userForm.temTemporada.$pristine }">
+                                <label>Temporada </label> 
+                                <input type="number" name="temTemporada" class="form-control" ng-model="temTemporada" placeholder="Temporada" required>
+                                <p ng-show="userForm.temTemporada.$invalid && !userForm.temTemporada.$pristine" class="help-block"></p>
+                                </div>
+                                <div class="form-group"> 
+                                <label> Rango: Fecha inicio - Fecha termino</label> 
+                                    <input date-range-picker 
+                                    class="form-control date-picker"
+                                    ng-model="temDaterange"
+                                    options="options"/>
+                                </div>
+                                <br>
+                                <div class="form-inline">
+                                <label>Activo</label> 
+                                <input type="checkbox" name="temActivo" ng-model="temActivo" class="form-control" value="false" style="width: 100px;height: 18px;">
+                                </div>
+                                <br>
+                                <br>
+                                <div class="form-inline">
+                                    <button ui-sref="index.temporadaInicial" 
+                                    class="btn btn-primary pull-left">
+                                    <strong>Volver</strong>
+                                    </button>
+                                    <button type="submit" href="javascript:void(0);" 
+                                    class="btn btn-primary pull-right" 
+                                    ng-disabled="userForm.$invalid">
+                                    <strong>Modificar Temporada</strong>
+                                    </button>                                    
+                                </div>
+                                <br>
+                                <br>
+                    </form>
+                </div>
+</div>
+</div>
+</div>
+
+<script>
+    function soloLetras(e){
+       key = e.keyCode || e.which;
+       tecla = String.fromCharCode(key).toLowerCase();
+       letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+       especiales = "8-37-39-46";
+
+       tecla_especial = false
+       for(var i in especiales){
+            if(key == especiales[i]){
+                tecla_especial = true;
+                break;
+            }
+        }
+
+        if(letras.indexOf(tecla)==-1 && !tecla_especial){
+            return false;
+        }
+    }
+</script>

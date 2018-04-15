@@ -1,0 +1,141 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Editar Sac</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a ui-sref="index.sacInicial">Mantenedor Sac</a>
+            </li>
+            <li>
+                <a>Editar Sac</a>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+    </div>
+</div>
+<br>
+
+<div>
+<div class="container-fluid">
+<div class="col-lg-offset-2 col-lg-8 col-md-10 col-md-offset-1 col-sm-12 ">
+<div>
+                <div class="ibox-content">
+                    <form  name="userForm" ng-submit="modificarSac()" class="ng-pristine ng-valid" novalidate>
+                           <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group" ng-class="{'has-error': userForm.sacCodigo.$invalid && !userForm.sacCodigo.$pristine }">
+                                <label>Código</label> 
+                                <input type="text" name="sacCodigo" class="form-control" ng-model="sacCodigo" placeholder="Código" required>
+                                <p ng-show="userForm.sacCodigo.$invalid && !userForm.sacCodigo.$pristine" class="help-block">El codigo es requerido</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group" ng-class="{ 'has-error' : userForm.sacNombre.$invalid && !userForm.sacNombre.$pristine }">
+                                <label>Nombre</label> 
+                                <input type="text" name="sacNombre" ng-model="sacNombre"  placeholder="Nombre" class="form-control" required>
+                                <p ng-show="userForm.sacNombre.$invalid && !userForm.sacNombre.$pristine" class="help-block">El nombre es requerido.</p>
+                                </div>
+                            </div>   
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group" ng-class="{ 'has-error' : userForm.sacIddac.$invalid && !userForm.sacIddac.$pristine }">
+                                <label>Iddac</label> 
+                                <input ng-model="sacIddac" name="sacIddac" type="number" maxlength="2"  min="0" max="99" placeholder="Iddac" class="form-control" required>
+                                <p ng-show="userForm.sacIddac.$invalid && !userForm.sacIddac.$pristine" class="help-block">El iddac es requerido (0-99)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6"> 
+                                <div  class="form-group" ng-class="{ 'has-errors' : userForm.sacRegion.$invalid && !userForm.sacRegion.$pristine , 'no-errors' : userForm.sacRegion.$valid}">
+                                <!-- <span class="input-label"> Región</span> -->
+                                <label>Región</label>
+                                <select 
+                                chosen
+                                data-ng-model = "sacRegion1" 
+                                ng-required = "true" 
+                                name = "sacRegion"
+                                allow-single-deselect = "true" 
+                                placeholder-text-single = "'Seleccione Region'"
+                                ng-options="item as item.nombre for item in items3 track by item.id" 
+                                ng-change="listarChosenComunas()">
+                                <option value="" selected>Seleccione Región</option> 
+                                </select>
+                                </div>                                                            
+                                <div class="error-container" ng-show="userForm.sacRegion.$dirty && userForm.sacRegion.$invalid && !userForm.sacRegion.$pristine" ng-messages="userForm.sacRegion.$error">                   
+                                 <div class="error" ng-message="required" style="color: #a94442;">
+                                    La región es requerida.
+                                </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group" ng-class="{ 'has-errors' : userForm.sacComuna.$dirty && userForm.sacComuna.$invalid && !userForm.sacComuna.$pristine , 'no-errors' : userForm.sacComuna.$valid}">
+                                <label>Comuna</label>
+                                <select     
+                                chosen                                                         
+                                data-ng-model = "sacComuna1" 
+                                ng-required = "true" 
+                                name = "sacComuna"
+                                allow-single-deselect = "true" 
+                                placeholder-text-single = "'Seleccione Comuna'"
+                                ng-options="item as item.nombre for item in items1 track by item.id">
+                                <option value="novalido" selected>Seleccione Comuna</option>
+                                </select>
+                                </div> 
+                                <div class="error-container" ng-show="userForm.sacComuna.$dirty && userForm.sacComuna.$invalid && !userForm.sacComuna.$pristine" ng-messages="userForm.sacComuna.$error">
+                                <div class="error" ng-message="required" style="color: #a94442;">
+                                La comuna es requerida.
+                                </div>
+                                </div>
+                            </div>         
+                        </div>       
+                         <br>
+                        <div class="form-inline">
+                        <label>Activo</label> 
+                        <input type="checkbox" name="sacActivo" ng-model="sacActivo" class="form-control" value="false" style="width: 100px;height: 18px;">
+                        </div>                               
+                        <br>
+                                <div class="form-inline">
+                                    <button ui-sref="index.sacInicial" 
+                                    class="btn btn-primary pull-left"      
+                                    style="margin-bottom: 0px;">
+                                    <strong>Volver</strong>
+                                    </button>
+                                    <button type="submit" href="javascript:void(0);" 
+                                    class="btn btn-primary pull-right" 
+                                    ng-disabled="userForm.$invalid" 
+                                    style="margin-bottom: 0px;">
+                                    <strong>Modificar Sac</strong>
+                                    </button>                                    
+                                </div>
+                                <br>
+                                <br>
+                    </form>
+                </div>
+</div>
+</div>
+</div>
+
+<script>
+    function soloLetras(e){
+       key = e.keyCode || e.which;
+       tecla = String.fromCharCode(key).toLowerCase();
+       letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+       especiales = "8-37-39-46";
+
+       tecla_especial = false
+       for(var i in especiales){
+            if(key == especiales[i]){
+                tecla_especial = true;
+                break;
+            }
+        }
+
+        if(letras.indexOf(tecla)==-1 && !tecla_especial){
+            return false;
+        }
+    }
+</script>

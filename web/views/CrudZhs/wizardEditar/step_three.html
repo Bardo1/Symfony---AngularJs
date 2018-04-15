@@ -1,0 +1,55 @@
+
+<fieldset>
+            <div class="ibox-content">
+                    <div class="row">
+                    <div class="col-md-6">
+                    <div class="form-group" ng-class="{'has-error': userForm.zhsCodigo.$invalid && !userForm.zhsCodigo.$pristine }">
+                    <label>Código ZHS</label> 
+                    <input type="text" name="zhsCodigo" class="form-control" ng-model="zhsCodigo" placeholder="Código zhs" readonly>
+                    <p ng-show="userForm.zhsCodigo.$invalid && !userForm.zhsCodigo.$pristine" class="help-block"></p>
+                    </div>
+                    </div>
+                    </div> 
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                           <div class="form-group" ng-class="{'has-error': userForm.zhsTemp1.$invalid && !userForm.zhsTemp1.$pristine }">
+                           <label>Temporada</label> 
+                           <input type="text" name="zhsTemp1" class="form-control" ng-model="zhsTemp1" placeholder="Código zhs" readonly>
+                           <p ng-show="userForm.zhsTemp1.$invalid && !userForm.zhsTemp1.$pristine" class="help-block"></p>
+                           </div>
+                        </div>               
+                        <div class="col-md-6"> 
+                           <div class="form-group" ng-class="{'has-error': userForm.zhsTempVer1.$invalid && !userForm.zhsTempVer1.$pristine }">
+                           <label>Temporada Versión</label> 
+                           <input type="text" name="zhsTempVer1" class="form-control" ng-model="zhsTempVer1" placeholder="Temporada Versión" readonly>
+                           <p ng-show="userForm.zhsTempVer1.$invalid && !userForm.zhsTempVer1.$pristine" class="help-block"></p>
+                           </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+            </div>
+</fieldset>
+
+<fieldset class="m-t-md">
+    <button type="submit" ng-click="volverDos()" 
+    class="btn btn-default"
+    style="margin-bottom: 0px;">
+    <strong>Previo</strong>
+    </button>
+    <button type="submit" ng-click="IngresarNuevosDatos()"
+    class="btn btn-primary" 
+    ng-disabled="userForm.$invalid" 
+    style="margin-bottom: 0px;">
+    <strong>Editar Zhs</strong>
+    </button> 
+</fieldset>

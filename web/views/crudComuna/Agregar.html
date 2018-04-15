@@ -1,0 +1,149 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-6 col-md-6">
+        <h2>Mantenedor Comuna</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a ui-sref="index.companiaInicial">Comuna Inicial</a>
+            </li>
+            <li>
+                <strong>Agregar Comuna</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-6 col-md-6">
+       <a class="btn-sm pull-right" ui-sref="index.comunaInicial" style="margin-top: 40px;height: 31px;">
+         <i class="fa fa-level-up" aria-hidden="true"></i> Volver
+      </a>  
+    </div>
+</div>
+<br>
+
+<div class="panel panel-default">
+        <div class="ibox-title">
+            <h5>Agregar Comuna
+            </h5>
+        </div>
+<div class="container-fluid">
+<div class="col-lg-offset-2 col-lg-8 col-md-10 col-md-offset-1 col-sm-12 ">
+<div>
+                <div>
+                    <form  name="userForm" ng-submit="agregarNuevo()" style="padding-bottom:20px;" class="ng-pristine ng-valid" novalidate>
+                    <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group" ng-class="{'has-error': userForm.comCod.$invalid && !userForm.comCod.$pristine }">
+                                <label>Código</label> 
+                                <input type="number" name="comCod" class="form-control" ng-model="comCod" placeholder="Código" required>
+                                <p ng-show="userForm.comCod.$invalid && !userForm.comCod.$pristine" class="help-block">
+                                El codigo es requerido</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group" ng-class="{ 'has-error' : userForm.comCom.$invalid && !userForm.comCom.$pristine }">
+                                <label>Nombre</label> 
+                                <input type="text" maxlength="80" name="comCom" ng-model="comCom"  placeholder="Nombre" class="form-control" required>
+                                <p ng-show="userForm.comCom.$invalid && !userForm.comCom.$pristine" class="help-block">El nombre es requerido.</p>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="row">
+                         <div class="col-md-6">
+                                <div class="form-group" ng-class="{ 'has-error' : userForm.comIde.$invalid && !userForm.comIde.$pristine }">
+                                <label>Ide</label> 
+                                <input ng-model="comIde" name="comIde" maxlength="10" type="number" placeholder="Ide" class="form-control" required>
+                                <p ng-show="userForm.comIde.$invalid && !userForm.comIde.$pristine" class="help-block">El Ide es requerido.</p>
+                                </div>
+                         </div>
+
+                         <div class="col-md-6"> 
+                                <div class="form-group" ng-class="{ 'has-error' : userForm.comProv.$invalid && !userForm.comProv.$pristine }">
+                                <label>Provincia</label>
+                                <input type="number" name="comProv" class="form-control" ng-model="comProv" ng-pattern="/^[0-9]*$/"
+                                placeholder="Provincia" maxlength="3" minlength="3" required>
+                                <p ng-show="userForm.comProv.$invalid && !userForm.comProv.$pristine" class="help-block">La provincia es requerida, solo pueden ser 3 numeros</p>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error' : userForm.comProv.$invalid &&!userForm.comProv.$pristine}">
+                                </div>
+                         </div>
+                    </div>
+
+                    <div class="row">
+                         <div class="col-md-6">
+                                <div class="form-group" ng-class="{ 'has-error' : userForm.comZonEx.$invalid && !userForm.comZonEx.$pristine }">
+                                <label>Zona Extrema</label> 
+                                <input ng-model="comZonEx" name="comZonEx" type="number" placeholder="Zona Extrema" class="form-control" required>
+                                <p ng-show="userForm.comZonEx.$invalid && !userForm.comZonEx.$pristine" class="help-block">El nombre es requerido.</p>
+                                </div>
+                          </div>
+                          <div class="col-md-6">
+                                    <div class="form-group" ng-class="{ 'has-errors' : userForm.comReg.$invalid && !comReg.$pristine , 'no-errors' : userForm.comReg.$valid}">
+                                    <label>Región </label>
+                                    <select
+                                    style="visibility: visible;"
+                                    chosen
+                                    class="form-control"
+                                    allow-single-deselect="true"
+                                    placeholder-text-single="'Seleccione Region'"
+                                    data-ng-model = "comReg1" 
+                                    ng-required = "true" 
+                                    name = "comReg"  
+                                    ng-options="item as item.nombre for item in items1 track by item.id">
+                                    <option value="" selected>Seleccione Región</option> 
+                                    </select>
+                                    </div>                                                
+                                    <div class="error-container" ng-show="userForm.comReg.$dirty && userForm.comReg.$invalid && !userForm.comReg.$pristine" ng-messages="userForm.comReg.$error">                   
+                                    <div class="error" ng-message="required" style="color: #a94442;">
+                                    La region es requerida.
+                                    </div>
+                                    </div>
+                            </div>
+                    </div>
+
+                    <div class="row">
+                          <div class="col-md-6"> 
+                                <div class="form-group" ng-class="{ 'has-error' : userForm.comRes.$invalid && !userForm.comRes.$pristine }">
+                                <label>Resolución</label>
+                                <input type="text" name="resResolucion" class="form-control" ng-model="comRes" ng-pattern="/^[0-9]*$/"
+                                placeholder="Resolución" maxlength="3" minlength="3" required>
+                                <p ng-show="userForm.comRes.$invalid && !userForm.comRes.$pristine" class="help-block">La resolucion es requerida, solo pueden ser 3 numeros</p>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error' : userForm.comRes.$invalid &&!userForm.comRes.$pristine}">
+                                </div>
+                         </div>
+                          <div class="col-md-6"> 
+                                <label>fecha resolucion</label>  
+                                <div class="input-group date">  
+                                <input data-date-format="dd-mm-yyyy" class="form-control" name="comFechRes" ng-model="comFechRes" placeholder="Fecha resolucion" default-view="year" min-view="date" max-view="year" date-time format="yyyy-MM-dd" auto-close="true" required >
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                </div>
+                                <p ng-show="userForm.comFechRes.$invalid && !userForm.comFechRes.$pristine" class="help-block">La fecha resolucion es requerida</p>
+                        </div>
+                    </div>
+                                <br>
+                                <div class="form-inline">
+                                <label>Activo</label> 
+                                <input type="checkbox" name="comActivo" ng-model="comActivo" class="form-control" value="false" style="width: 100px;height: 18px;">
+                                </div>
+                                <br>
+                                <br>
+                                <div class="ibox-footer">
+                                <div class="form-inline">
+                                    <button ui-sref="index.comunaInicial" 
+                                    class="btn btn-primary pull-left"                          
+                                    style="margin-bottom: 0px;">
+                                    <strong>Volver</strong>
+                                    </button>
+                                    <button type="submit" href="javascript:void(0);" 
+                                    class="btn btn-primary pull-right" 
+                                    ng-disabled="userForm.$invalid" 
+                                    style="margin-bottom: 0px;">
+                                    <strong>Agregar nuevo</strong>
+                                    </button>                                    
+                                </div>
+                                </div>
+                                <br>
+                                <br>                                  
+                    </form>
+                </div>
+</div>
+</div>
+</div>

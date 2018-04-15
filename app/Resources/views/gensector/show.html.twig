@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Gensector</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ genSector.id }}</td>
+            </tr>
+            <tr>
+                <th>Sector</th>
+                <td>{{ genSector.sector }}</td>
+            </tr>
+            <tr>
+                <th>Ordensector</th>
+                <td>{{ genSector.ordensector }}</td>
+            </tr>
+            <tr>
+                <th>Descripcioncantidadasegurada</th>
+                <td>{{ genSector.descripcioncantidadasegurada }}</td>
+            </tr>
+            <tr>
+                <th>Cantidadasegurada</th>
+                <td>{{ genSector.cantidadasegurada }}</td>
+            </tr>
+            <tr>
+                <th>Idtiporiesgo</th>
+                <td>{{ genSector.idtiporiesgo }}</td>
+            </tr>
+            <tr>
+                <th>Nombretiporiesgo</th>
+                <td>{{ genSector.nombretiporiesgo }}</td>
+            </tr>
+            <tr>
+                <th>Activo</th>
+                <td>{{ genSector.activo }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('gensector_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('gensector_edit', { 'id': genSector.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

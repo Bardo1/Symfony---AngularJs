@@ -1,0 +1,152 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-6 col-md-6">
+        <h2>Mantenedor Producto</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a ui-sref="index.productoInicial">Producto Inicial</a>
+            </li>
+            <li>
+                <strong>Editar Producto</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-6 col-md-6">
+       <a class="btn-sm pull-right" ui-sref="index.productoInicial" style="margin-top: 40px;height: 31px;">
+         <i class="fa fa-level-up" aria-hidden="true"></i> Volver
+      </a>  
+    </div>
+</div>
+<br>
+
+<div class="panel panel-default">
+                <div class="ibox-title">
+                    <h5>Editar Producto
+                    </h5>
+                </div>
+<div class="container-fluid">
+<div class="col-lg-offset-2 col-lg-8 col-md-10 col-md-offset-1 col-sm-12 ">
+<div>
+                <div>
+                   <form  name="userForm" ng-submit="modificarProducto()" style="padding-bottom:20px;" class="ng-pristine ng-valid" novalidate> 
+                    <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group" ng-class="{'has-error': userForm.proCod.$invalid && !userForm.proCod.$pristine }">
+                                <label>Codigo</label> 
+                                <input type="text" name="proCod" class="form-control" ng-model="proCod" placeholder="Código" required>
+                                <p ng-show="userForm.proCod.$invalid && !userForm.proCod.$pristine" class="help-block">
+                                El codigo es requerido</p>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group" ng-class="{ 'has-error' : userForm.proNom.$invalid && !userForm.proNom.$pristine }">
+                                <label>Nombre</label> 
+                                <input type="text" name="proNom" ng-model="proNom"  placeholder="Nombre" class="form-control" required>
+                                <p ng-show="userForm.proNom.$invalid && !userForm.proNom.$pristine" class="help-block">El nombre es requerido.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group" ng-class="{ 'has-error' : userForm.proCat.$invalid && !userForm.proCat.$pristine }">
+                                <label>Categoria</label> 
+                                <input ng-model="proCat" name="proCat" type="number" placeholder="Categoria" class="form-control" required>
+                                <p ng-show="userForm.proCat.$invalid && !userForm.proCat.$pristine" class="help-block">La categoria es requerida</p>
+                                </div>
+                            </div> 
+                    </div>
+                    <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group" ng-class="{ 'has-errors' : userForm.proSec.$invalid && !proSec.$pristine , 'no-errors' : userForm.proSec.$valid}">
+                                    <label>Sector</label>
+                                    <select
+                                    style="visibility: visible;"
+                                    chosen
+                                    class="form-control"
+                                    allow-single-deselect="true"
+                                    placeholder-text-single="'Seleccione Sector'"
+                                    data-ng-model = "proSec1" 
+                                    ng-required = "true" 
+                                    name = "proSec"  
+                                    ng-options="item as item.nombre for item in items1 track by item.id" 
+                                    ng-change="listarChosenSector()">
+                                    <option value="" selected>Seleccione Sector</option> 
+                                    </select>
+                                    </div>                                                
+                                    <div class="error-container" ng-show="userForm.proSec.$dirty && userForm.proSec.$invalid && !userForm.proSec.$pristine" ng-messages="userForm.proSec.$error">                   
+                                    <div class="error" ng-message="required" style="color: #a94442;">
+                                        El sector es requerido.
+                                    </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6"> 
+                                    <div class="form-group"  ng-class="{ 'has-errors' : userForm.proRubro.$invalid, 'no-errors' : userForm.proRubro.$valid}">
+                                    <label>Rubro</label>
+                                    <select 
+                                    chosen
+                                    class="form-control" 
+                                    data-ng-model = "proRubro1" 
+                                    ng-required = "true" 
+                                    name = "proRubro"
+                                    allow-single-deselect = "true" 
+                                    placeholder-text-single = "'Seleccione Rubro'"
+                                    ng-options="item as item.nombre for item in items track by item.id">
+                                    <option value="">Seleccione Rubro</option> 
+                                    </select>
+                                    </div> 
+                                    <div class="error-container" ng-show="userForm.proRubro.$dirty && userForm.proRubro.$invalid" ng-messages="userForm.proRubro.$error">
+                                    <div class="error" ng-message="required" style="color: #a94442;">
+                                    El mes es requerido
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                      <div class="row">
+                        <div class="col-md-6"> 
+                                <div class="form-group" ng-class="{ 'has-error' : userForm.proRes.$invalid && !userForm.proRes.$pristine }">
+                                <label>Resolución</label>
+                                <input type="text" name="proRes" class="form-control" ng-model="proRes" ng-pattern="/^[0-9]*$/"
+                                placeholder="Resolución" maxlength="3" minlength="3" required>
+                                <p ng-show="userForm.proRes.$invalid && !userForm.proRes.$pristine" class="help-block">La resolucion es requerida, solo pueden ser 3 numeros</p>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error' : userForm.resFechaRes.$invalid &&!userForm.resFechaRes.$pristine}">
+                                </div>
+                        </div>
+                        <div class="col-md-6"> 
+                                <label>Fecha resolución</label>  
+                                <div class="input-group date">  
+                                <input data-date-format="dd-mm-yyyy" class="form-control" name="proFech" ng-model="proFech"  placeholder="Fecha Resolución" default-view="year" min-view="date" max-view="year" date-time format="yyyy-MM-dd" auto-close="true" required >
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                </div>
+                                <p ng-show="userForm.proFech.$invalid && !userForm.proFech.$pristine" class="help-block">La fecha resolución es requerida</p>
+                        </div>
+                    </div>
+                                <br>
+                                <div class="form-inline">
+                                <label>Activo</label> 
+                                <input type="checkbox" name="proActivo" ng-model="proActivo" class="form-control" value="false" style="width: 100px;height: 18px;">
+                                </div>
+                                <br>
+                                <br>
+                                <div class="ibox-footer">
+                                <div class="form-inline">
+                                    <button ui-sref="index.productoInicial" 
+                                    class="btn btn-primary pull-left"                          
+                                    style="margin-bottom: 0px;">
+                                    <strong>Volver</strong>
+                                    </button>
+                                    <button type="submit" href="javascript:void(0);" 
+                                    class="btn btn-primary pull-right" 
+                                    ng-disabled="userForm.$invalid" 
+                                    style="margin-bottom: 0px;">
+                                    <strong>Editar Producto</strong>
+                                    </button>                                    
+                                </div>
+                                </div>
+                                <br>
+                                <br>                                  
+                    </form>
+                </div>
+</div>
+</div>
+</div>
+

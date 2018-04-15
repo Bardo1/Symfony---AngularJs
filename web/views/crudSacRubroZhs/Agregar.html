@@ -1,0 +1,109 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Agregar Sac Rubro Zhs</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a ui-sref="index.sacrubrozhsInicial">Mantenedor Sac Rubro Zhs</a>
+            </li>
+            <li>
+                <a>Agregar Tabla</a>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+    </div>
+</div>
+<br>
+
+<div class="wrapper wrapper-content animated fadeInRight ng-scope"  style="width: 820px;">
+
+<div class="row">
+<div class="col-lg-offset-2 col-lg-12 col-md-12 col-xs-6 ">
+<div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <form  name="userForm" ng-submit="agregarNuevo()" novalidate>                             
+                                
+                                <div class="form-inline" ng-class="{ 'has-error' : userForm.srzZhs.$invalid && !userForm.srzZhs.$pristine }">
+                                <label>Zhs </label>
+                                &nbsp;
+                                <select required
+                                chosen
+                                name="srzZhs"
+                                allow-single-deselect="true"
+                                placeholder-text-single="'Seleccione Zhs'"
+                                no-results-text="'Tough luck'"
+                                ng-model="srzZhs" 
+                                ng-options="item as item.codigo for item in items track by item.id" 
+                                ng-change="listarChosenZhs()"
+                                style="width:200px;">
+                                </select> 
+                                </div>
+                                <br>
+                                
+                                <div class="form-inline">
+                                <label>Sector </label>
+                                &nbsp;
+                                <select
+                                chosen
+                                allow-single-deselect="true"
+                                placeholder-text-single="'Seleccione Sector'"
+                                no-results-text="'Tough luck'"
+                                ng-model="srzSector" 
+                                ng-options="item as item.nombre for item in items3 track by item.id" 
+                                ng-change="listarChosenSector()"
+                                style="width:200px;
+                                ">
+                                </select> 
+
+                                <label>Rubro </label>
+                                &nbsp;
+                                <select
+                                chosen
+                                allow-single-deselect="true"
+                                placeholder-text-single="'Seleccione Rubro'"
+                                no-results-text="'Tough luck'"
+                                ng-model="srzRubro" 
+                                ng-options="item as item.nombre for item in items1 track by item.id" 
+                                ng-change="listarChosenRubro()"
+                                style="width:200px;">
+                                </select> 
+                                </div>
+                                <br>
+
+                                <div class="form-inline">
+                                <label>Sac </label>
+                                &nbsp;
+                                <select
+                                chosen
+                                allow-single-deselect="true"
+                                placeholder-text-single="'Seleccione Sac'"
+                                no-results-text="'Tough luck'"
+                                ng-model="srzSac" 
+                                ng-options="item as item.codigo for item in items2 track by item.id" 
+                                ng-change="listarChosenSac()"
+                                style="width:200px;">
+                                </select> 
+                                </div>
+                                <br>
+                                <br>
+                                <div class="form-inline">
+                                    <button ui-sref="index.sacrubrozhsInicial" 
+                                    class="btn btn-sm btn-primary pull-left"                                     
+                                    style="margin-bottom: 0px;">
+                                    <strong>Volver</strong>
+                                    </button>
+                                    <button type="submit" href="javascript:void(0);" 
+                                    class="btn btn-sm btn-primary pull-right" 
+                                    ng-disabled="userForm.$invalid" 
+                                    style="margin-bottom: 0px;">
+                                    <strong>Agregar nuevo</strong>
+                                    </button>                                    
+                                </div>
+                                <br>
+                                <br>
+                    </form>
+                </div>
+</div>
+</div>
+</div>
+</div>

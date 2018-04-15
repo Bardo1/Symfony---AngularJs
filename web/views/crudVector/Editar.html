@@ -1,0 +1,166 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-6 col-md-6">
+        <h2>Mantenedor Vector</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a ui-sref="index.companiaInicial">Vector Inicial</a>
+            </li>
+            <li>
+                <a>Editar Vector</a>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-6 col-md-6">
+       <a class="btn-sm pull-right" ui-sref="index.vectorInicial" style="margin-top: 40px;height: 31px;">
+         <i class="fa fa-level-up" aria-hidden="true"></i> Volver
+      </a>  
+    </div>
+</div>
+<br>
+
+<div class="panel panel-default">
+                <div class="ibox-title">
+                    <h5>Editar Vector
+                    </h5>
+                </div>
+<div class="container-fluid">
+<div class="col-lg-offset-2 col-lg-8 col-md-10 col-md-offset-1 col-sm-12 ">
+<div>
+                <div>
+                   <form  name="userForm" ng-submit="modificarVector()" style="padding-bottom:20px;" class="ng-pristine ng-valid" novalidate>
+                    <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group" ng-class="{ 'has-error' : userForm.vecNom.$invalid && !userForm.vecNom.$pristine }">
+                                <label>Nombre</label> 
+                                <input type="text" name="vecNom" ng-model="vecNom" placeholder="Nombre" class="form-control" maxlength="149" required>
+                                <p ng-show="userForm.vecNom.$invalid && !userForm.vecNom.$pristine" class="help-block">El Nombre es requerido.</p>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="row">
+                         <div class="col-md-6">
+                                <div class="form-group" ng-class="{ 'has-error' : userForm.vecCol.$invalid && !userForm.vecCol.$pristine }">
+                                <label>Columna</label> 
+                                <input ng-model="vecCol" name="vecCol" type="text" placeholder="Columna" class="form-control" maxlength="20" required>
+                                <p ng-show="userForm.vecCol.$invalid && !userForm.vecCol.$pristine" class="help-block">La Columna es requerida.</p>
+                                </div>
+                         </div>
+                         <div class="col-md-6">       
+                                <div class="form-group" ng-class="{ 'has-error' : userForm.vecPrio.$invalid && !userForm.vecPrio.$pristine }">
+                                <label>Prioridad</label> 
+                                <input ng-model="vecPrio" name="vecPrio" type="number" placeholder="Prioridad" class="form-control" required>
+                                <p ng-show="userForm.vecPrio.$invalid && !userForm.vecPrio.$pristine" class="help-block">La prioridad es requerida.</p>
+                                </div>
+                         </div>
+                    </div>
+                    <div class="row">
+                         <div class="col-md-6">
+                                <div class="form-group" ng-class="{ 'has-error' : userForm.vecNs.$invalid && !userForm.vecNs.$pristine }">
+                                <label>Ns</label> 
+                                <input ng-model="vecNs" maxlength="3" name="vecNs" type="text" placeholder="Ns" class="form-control" required>
+                                <p ng-show="userForm.vecNs.$invalid && !userForm.vecNs.$pristine" class="help-block">El Ns es requerido.</p>
+                                </div>
+                         </div>
+                         <div class="col-md-6">       
+                                <div class="form-group" ng-class="{ 'has-error' : userForm.vecOper.$invalid && !userForm.vecOper.$pristine }">
+                                <label>Operador</label> 
+                                <input ng-model="vecOper" maxlength="5" name="vecOper" type="text" placeholder="Operador" class="form-control"  required>
+                                <p ng-show="userForm.vecOper.$invalid && !userForm.vecOper.$pristine" class="help-block">El Operador es requerido.</p>
+                                </div>
+                         </div>
+                    </div>
+                    <div class="row">
+                         <div class="col-md-6"> 
+                                    <div class="form-group"  ng-class="{ 'has-errors' : userForm.vecSector.$invalid, 'no-errors' : userForm.vecSector.$valid}">
+                                    <label>Sector</label>
+                                    <select 
+                                    chosen
+                                    class="form-control" 
+                                    data-ng-model = "vecSector1" 
+                                    ng-required = "true" 
+                                    name = "vecSector"
+                                    allow-single-deselect = "true" 
+                                    placeholder-text-single = "'Seleccione Sector'"
+                                    ng-options="item as item.nombre for item in items track by item.id"
+                                    ng-change="cambiarRubro()">
+                                    <option value="">Seleccione Sector</option> 
+                                    </select>
+                                    </div> 
+                                    <div class="error-container" ng-show="userForm.vecSector.$dirty && userForm.vecSector.$invalid" ng-messages="userForm.vecSector.$error">
+                                    <div class="error" ng-message="required" style="color: #a94442;">
+                                    El Sector es requerido.
+                                    </div>
+                                    </div>
+                                </div>
+                                 <div class="col-md-6"> 
+                                    <div class="form-group"  ng-class="{ 'has-errors' : userForm.vecRubro.$invalid, 'no-errors' : userForm.vecRubro.$valid}">
+                                    <label>Rubro</label>
+                                    <select 
+                                    chosen
+                                    class="form-control" 
+                                    data-ng-model = "vecRubro1" 
+                                    ng-required = "true" 
+                                    name = "vecRubro"
+                                    allow-single-deselect = "true" 
+                                    placeholder-text-single = "'Seleccione Rubro'"
+                                    ng-options="item as item.nombre for item in items1 track by item.id">
+                                    <option value="">Seleccione Rubro</option> 
+                                    </select>
+                                    </div> 
+                                    <div class="error-container" ng-show="userForm.vecRubro.$dirty && userForm.vecRubro.$invalid" ng-messages="userForm.vecRubro.$error">
+                                    <div class="error" ng-message="required" style="color: #a94442;">
+                                    El rubro es requerido.
+                                    </div>
+                                    </div>
+                                </div>
+                    </div>
+                                <br>
+                                <div class="form-inline">
+                                <label>Activo</label> 
+                                <input type="checkbox" name="vecActivo" ng-model="vecActivo" class="form-control" value="false" style="width: 100px;height: 18px;">
+                                </div>
+                                <br>
+                                <br>
+                                <div class="ibox-footer">
+                                <div class="form-inline">
+                                    <button ui-sref="index.vectorInicial" 
+                                    class="btn btn-primary pull-left"                          
+                                    style="margin-bottom: 0px;">
+                                    <strong>Volver</strong>
+                                    </button>
+                                    <button type="submit" href="javascript:void(0);" 
+                                    class="btn btn-primary pull-right" 
+                                    ng-disabled="userForm.$invalid" 
+                                    style="margin-bottom: 0px;">
+                                    <strong>Editar vector</strong>
+                                    </button>                                    
+                                </div>
+                                </div>
+                                <br>
+                                <br>                                  
+                    </form>
+                </div>
+</div>
+</div>
+</div>
+
+<script>
+    function soloLetras(e){
+       key = e.keyCode || e.which;
+       tecla = String.fromCharCode(key).toLowerCase();
+       letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+       especiales = "8-37-39-46";
+
+       tecla_especial = false
+       for(var i in especiales){
+            if(key == especiales[i]){
+                tecla_especial = true;
+                break;
+            }
+        }
+
+        if(letras.indexOf(tecla)==-1 && !tecla_especial){
+            return false;
+        }
+    }
+</script>

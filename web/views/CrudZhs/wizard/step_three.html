@@ -1,0 +1,87 @@
+<fieldset>
+            <div class="ibox-content">
+                    <div class="row">
+                    <div class="col-md-6">
+                    <div class="form-group" ng-class="{'has-error': userForm.zhsCodigo.$invalid && !userForm.zhsCodigo.$pristine }">
+                    <label>Código ZHS</label> 
+                    <input type="text" name="zhsCodigo" class="form-control" ng-model="zhsCodigo" placeholder="Código zhs" required>
+                    <p ng-show="userForm.zhsCodigo.$invalid && !userForm.zhsCodigo.$pristine" class="help-block"></p>
+                    </div>
+                    </div>
+                    </div> 
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group" ng-class="{ 'has-errors' : userForm.zhsSector.$invalid && !zhsSector.$pristine , 'no-errors' : userForm.zhsSector.$valid}">
+                            <label class="input-label">Temporada </label>
+                            <select
+                            chosen
+                            class="form-control"
+                            allow-single-deselect="true"
+                            placeholder-text-single="'Seleccione Sector'"
+                            no-results-text="'No hay resultados'"
+                            data-ng-model = "zhsTemp1" 
+                            ng-required = "true" 
+                            name = "zhsSector"  
+                            ng-options="item as item.temporada for item in items1 track by item.id"
+                            ng-change="listarChosenSector()">
+                            <option value="" selected>Seleccione Temporada</option> 
+                            </select>
+                            </div>                                                
+                            <div class="error-container" ng-show="userForm.zhsSector.$dirty && userForm.zhsSector.$invalid && !userForm.zhsSector.$pristine" ng-messages="userForm.zhsSector.$error">                   
+                            <div class="error" ng-message="required" style="color: #a94442;">
+                            El sector es requerido.
+                            </div>
+                            </div>
+                        </div>               
+                        <div class="col-md-6"> 
+                            <div class="form-group" ng-class="{ 'has-errors': userForm.zhsRubro.$invalid && !zhsRubro.$pristine , 'no-errors' : userForm.zhsRubro.$valid}">
+                            <label>Versión temporada </label>
+                            <select
+                            chosen
+                            class="form-control"
+                            allow-single-deselect="true"
+                            placeholder-text-single="'Seleccione Rubro'"
+                            no-results-text="'No hay resultados'"
+                            data-ng-model = "zhsTempVer1" 
+                            ng-required = "true" 
+                            name = "zhsRubro"  
+                            ng-options="item as item.temporada_version for item in items2 track by item.id"
+                            ng-change="listarChosenRubro()">
+                            <option value="" selected>Versión temporada</option> 
+                            </select>
+                            </div>                                                
+                            <div class="error-container" ng-show="userForm.zhsRubro.$dirty && userForm.zhsRubro.$invalid && !userForm.zhsRubro.$pristine" ng-messages="userForm.zhsRubro.$error">                   
+                            <div class="error" ng-message="required" style="color: #a94442;">
+                            El Rubro es requerido.
+                            </div>
+                            </div> 
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+            </div>
+</fieldset>
+
+<fieldset class="m-t-md">
+    <button type="submit" ui-sref="index.wizard.step_two" 
+    class="btn btn-default"
+    ng-disabled="userForm.$invalid" 
+    style="margin-bottom: 0px;">
+    <strong>Previo</strong>
+    </button>
+    <button type="submit" ng-click="agregarNuevoSac()"
+    class="btn btn-primary" 
+    ng-disabled="userForm.$invalid" 
+    style="margin-bottom: 0px;">
+    <strong>Ingresar Zhs</strong>
+    </button> 
+</fieldset>

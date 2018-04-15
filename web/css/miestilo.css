@@ -1,0 +1,27 @@
+.chosen-container .chosen-results, .chosen-container-active.chosen-with-drop .chosen-single span, .chosen-container-single .chosen-single span {
+	font-weight: normal;
+	z-index: 1;
+}
+
+[class*="col-"] .chosen-container {
+    width:98%!important;
+}
+[class*="col-"] .chosen-container .chosen-search input[type="text"] {
+    padding:2px 4%!important;
+    width:90%!important;
+    margin:5px 2%;
+}
+[class*="col-"] .chosen-container .chosen-drop {
+    width: 100%!important;
+}
+
+.dt-buttons {
+   text-align: right;
+   padding-bottom: 10px;
+}
+
+
+div.chzn-container div.chzn-drop {
+   z-index: 9;
+}
+

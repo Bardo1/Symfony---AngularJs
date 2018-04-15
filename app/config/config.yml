@@ -1,0 +1,232 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: services.yml }
+    - { resource: "@NormasBundle/Resources/config/services.yml" }
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: en
+
+framework:
+    #esi: ~
+    #translator: { fallbacks: ['%locale%'] }
+    translator: ~
+    templating:
+        engines: ['twig']
+    secret: '%secret%'
+    router:
+        resource: '%kernel.root_dir%/config/routing.yml'
+        strict_requirements: ~
+    form: ~
+
+    validation: { enable_annotations: true }
+    serializer:
+        enabled: true
+    templating:
+        engines: ['twig']
+    default_locale: '%locale%'
+    trusted_hosts: ~
+    trusted_proxies: ~
+    session:
+        # handler_id set to null will use default session handler from php.ini
+        handler_id: ~
+    fragments: ~
+    http_method_override: true
+    translator: ~
+    csrf_protection: ~
+        #enabled:        false
+
+    
+# Twig Configuration
+# twig:
+#     debug: '%kernel.debug%'
+#     strict_variables: '%kernel.debug%'
+#     name_converter: 'serializer.name_converter.camel_case_to_snake_case'
+twig:
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver: pdo_pgsql
+        #driver: pdo_mysql
+        host: '%database_host%'
+        port: '%database_port%'
+        dbname: '%database_name%'
+        user: '%database_user%'
+        password: '%database_password%'
+        charset: UTF8
+        # schema_filter:               "/^agro/"
+        # if using pdo_sqlite as your database driver:
+        #   1. add the path in parameters.yml
+        #     e.g. database_path: '%kernel.root_dir%/data/data.db3'
+        #   2. Uncomment database_path in parameters.yml.dist
+        #   3. Uncomment next line:
+        #path: '%database_path%'
+
+    orm:
+        auto_generate_proxy_classes: '%kernel.debug%'
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        auto_mapping: true
+
+# Swiftmailer Configuration
+# swiftmailer:
+#     transport: '%mailer_transport%'
+#     host: '%mailer_host%'
+#     username: '%mailer_user%'
+#     password: '%mailer_password%'
+#     spool: { type: memory }
+
+swiftmailer:
+    transport: "%mailer_transport%"
+    host:      "%mailer_host%"
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"
+    spool: { type: memory }
+
+# swiftmailer:
+#     transport:  smtp
+#     encryption: ssl
+#     auth_mode:  login
+#     host:       "%mailer_host%"
+#     username:   walterrmz1@gmail.com
+#     password:   Aa5371569543210
+# swiftmailer:
+#     transport:            smtp
+#     username:             ~
+#     password:             ~
+#     host:                 localhost
+#     port:                 false
+#     encryption:           ~
+#     auth_mode:            ~
+#     spool:
+#         type:                 file
+#         path:                 '%kernel.cache_dir%/swiftmailer/spool'
+#     sender_address:       ~
+#     antiflood:
+#         threshold:            99
+#         sleep:                0
+#     delivery_addresses:   []
+#     disable_delivery:     ~
+#     logging:              '%kernel.debug%'
+
+
+assetic:
+    debug:          "%kernel.debug%"
+    use_controller: false
+    bundles:        [ NormasBundle ]
+    filters:
+        cssrewrite: ~
+fos_user:
+    db_driver: orm 
+    firewall_name: main
+    user_class: NormasBundle\Entity\User
+    from_email:
+        address: walterrmz1@gmail.com
+        sender_name: Demo registro
+    resetting:
+        email:
+            from_email:
+                address:        walterrmz1@gmail.com
+                sender_name:    Demo Resetting
+
+    service:
+        mailer:               fos_user.mailer.default
+        email_canonicalizer:  fos_user.util.canonicalizer.default
+        token_generator:      fos_user.util.token_generator.default
+        username_canonicalizer: fos_user.util.canonicalizer.default
+        user_manager:         fos_user.user_manager.default
+
+
+
+fos_rest:
+    routing_loader:
+        default_format: json
+    param_fetcher_listener: true
+    body_listener: true
+    disable_csrf_role: IS_AUTHENTICATED_ANONYMOUSLY
+    body_converter:
+        enabled: true
+    view:
+        view_response_listener: true
+
+# nelmio_cors:
+#     defaults:
+#         allow_credentials: false
+#         allow_origin: []
+#         allow_headers: []
+#         allow_methods: []
+#         expose_headers: []
+#         max_age: 0
+#     paths:
+#         '^/api/':
+#             allow_origin: ['*']
+#             allow_headers: ['*']
+#             allow_methods: ['POST', 'PUT', 'GET', 'DELETE']
+#             max_age: 3600
+
+sensio_framework_extra:
+    request: { converters: true }
+    view:    { annotations: false }
+    router:  { annotations: true }
+
+nelmio_api_doc:
+    sandbox:
+        authentication:             # default is `~` (`null`), if set, the sandbox automatically
+                                    # send authenticated requests using the configured `delivery`
+
+            name: access_token      # access token name or query parameter name or header name
+
+            delivery: http          # `query`, `http`, and `header` are supported
+
+            # Required if http delivery is selected.
+            type:     basic         # `basic`, `bearer` are supported
+
+            custom_endpoint: true   # default is `false`, if `true`, your user will be able to
+                                    # specify its own endpoint
+
+        enabled:  true              # default is `true`, you can set this parameter to `false`
+                                    # to disable the sandbox
+        #endpoint: http://localhost:8000/   # default is `/app_dev.php`, use this parameter
+                                                # to define which URL to call through the sandbox
+
+        accept_type: application/json           # default is `~` (`null`), if set, the value is
+                                                # automatically populated as the `Accept` header
+
+        body_format:
+            formats: [ form, json ]             # array of enabled body formats,
+                                                # remove all elements to disable the selectbox
+            default_format: form                # default is `form`, determines whether to send
+                                                # `x-www-form-urlencoded` data or json-encoded
+                                                # data (by setting this parameter to `json`) in
+                                                # sandbox requests
+
+        request_format:
+            formats:                            # default is `json` and `xml`,
+                json: application/json          # override to add custom formats or disable
+                xml: application/xml            # the default formats
+
+            method: format_param    # default is `format_param`, alternately `accept_header`,
+                                    # decides how to request the response format
+
+            default_format: json    # default is `json`,
+                                    # default content format to request (see formats)
+
+        entity_to_choice: false     # default is `true`, if `false`, entity collection
+                                    # will not be mapped as choice
+fos_js_routing:
+    routes_to_expose: [ fos_user_security_logout]
+
+knp_paginator:
+    page_range: 5                      # rango usado por dafault en la paginación
+    default_options:
+        page_name: page                # nombre para cada sección de consulta
+        sort_field_name: sort          # nombre del parámetro de consulta
+        sort_direction_name: direction # dirección del nombre del parámetro
+        distinct: true                 # garantiza resultados distintos
+    template:
+        pagination: KnpPaginatorBundle:Pagination:sliding.html.twig     # plantilla de control de paginación
+        sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig # plantilla enlace

@@ -1,0 +1,253 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-6 col-md-6">
+        <h2>Mantenedor Prima</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a ui-sref="index.companiaInicial">Prima Inicial</a>
+            </li>
+            <li>
+                <strong>Agregar Prima</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-6 col-md-6">
+       <a class="btn-sm pull-right" ui-sref="index.primaInicial" style="margin-top: 40px;height: 31px;">
+         <i class="fa fa-level-up" aria-hidden="true"></i> Volver
+      </a>  
+    </div>
+</div>
+<br>
+
+<div class="panel panel-default">
+        <div class="ibox-title">
+            <h5>Agregar Prima
+            </h5>
+        </div>
+<div class="container-fluid">
+<div class="col-lg-offset-2 col-lg-8 col-md-10 col-md-offset-1 col-sm-12 ">
+<div>
+                <div>
+<!-- //TIPO PRIMA: PRIMA MINIMA NETA, PRIMA FIJA  moneda:uf, ud   tipo valor:rango, fija
+    // 4 Seleccionables -->
+                    <form  name="userForm" ng-submit="agregarNuevo()" style="padding-bottom:20px;" class="ng-pristine ng-valid" novalidate>
+                    <div class="row">
+                            <div class="col-md-6"> 
+                                    <div class="form-group"  ng-class="{ 'has-errors' : userForm.priTipPri.$invalid, 'no-errors' : userForm.priTipPri.$valid}">
+                                    <label>Tipo Prima</label>
+                                    <select 
+                                    chosen
+                                    class="form-control" 
+                                    data-ng-model = "priTipPri1" 
+                                    ng-required = "true" 
+                                    name = "priTipPri"
+                                    allow-single-deselect = "true" 
+                                    placeholder-text-single = "'Seleccione Tipo Prima'">
+                                    <option value="">Seleccione Tipo Prima</option> 
+                                    <option value="PF" id="PF">Prima Fija</option> 
+                                    <option value="PNM" id="PNM" >Prima Neta Minima</option> 
+                                    </select>
+                                    </div> 
+                                    <div class="error-container" ng-show="userForm.priTipPri.$dirty && userForm.priTipPri.$invalid" ng-messages="userForm.priTipPri.$error">
+                                    <div class="error" ng-message="required" style="color: #a94442;">
+                                    El tipo prima es requerido.
+                                    </div>
+                                    </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group" ng-class="{ 'has-error' : userForm.priRutBe.$invalid && !userForm.priRutBe.$pristine }">
+                                <label>Rut Beneficiario</label> 
+                                <input type="text" ng-rut name="priRutBe" ng-model="priRutBe"  placeholder="Rut" class="form-control" required>
+                                <p ng-show="userForm.priRutBe.$invalid && !userForm.priRutBe.$pristine" class="help-block">El rut beneficiario es requerido.</p>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="row"> 
+                         <div class="col-md-6">
+                                <div class="form-group" ng-class="{ 'has-error' : userForm.priDes.$invalid && !userForm.priDes.$pristine }">
+                                <label>Descripción</label> 
+                                <input ng-model="priDes" name="priDes" type="text" placeholder="Descripción" class="form-control" required>
+                                <p ng-show="userForm.priDes.$invalid && !userForm.priDes.$pristine" class="help-block">La descripción es requerida.</p>
+                                </div>
+                         </div>
+                            <div class="col-md-6"> 
+                                    <div class="form-group"  ng-class="{ 'has-errors' : userForm.priMon.$invalid, 'no-errors' : userForm.priMon.$valid}">
+                                    <label>Moneda</label>
+                                    <select 
+                                    chosen
+                                    class="form-control" 
+                                    data-ng-model = "priMon1" 
+                                    ng-required = "true" 
+                                    name = "priMon"
+                                    allow-single-deselect = "true" 
+                                    placeholder-text-single = "'Seleccione Moneda'">
+                                    <option value="">Seleccione Moneda</option> 
+                                    <option value="UF" id="UF">UF</option> 
+                                    <option value="UD" id="UD" >UD</option> 
+                                    </select>
+                                    </div> 
+                                    <div class="error-container" ng-show="userForm.priMon.$dirty && userForm.priMon.$invalid" ng-messages="userForm.priMon.$error">
+                                    <div class="error" ng-message="required" style="color: #a94442;">
+                                    La moneda es requerida.
+                                    </div>
+                                    </div>
+                            </div>
+                    </div>
+                      <div class="row">
+                            <div class="col-md-6"> 
+                                    <div class="form-group"  ng-class="{ 'has-errors' : userForm.priTipVal.$invalid, 'no-errors' : userForm.priTipVal.$valid}">
+                                    <label>Tipo Valor</label>
+                                    <select 
+                                    chosen
+                                    class="form-control" 
+                                    data-ng-model = "priTipVal1" 
+                                    ng-required = "true" 
+                                    name = "priTipVal"
+                                    allow-single-deselect = "true" 
+                                    placeholder-text-single = "'Seleccione Rubro'">
+                                    <option value="">Seleccione Tipo Valor</option>
+                                    <option value="R" id="R">Rango</option> 
+                                    <option value="F" id="F">Fija</option> 
+                                    </select>
+                                    </div> 
+                                    <div class="error-container" ng-show="userForm.priTipVal.$dirty && userForm.priTipVal.$invalid" ng-messages="userForm.priTipVal.$error">
+                                    <div class="error" ng-message="required" style="color: #a94442;">
+                                    El tipo valor es requerido.
+                                    </div>
+                                    </div>
+                            </div>
+                    </div>
+                    <div class="row"> 
+                         <div class="col-md-6">
+                                <div class="form-group" ng-class="{ 'has-error' : userForm.priVal1.$invalid && !userForm.priVal1.$pristine }">
+                                <label>Valor 1</label> 
+                                <input ng-model="priVal1" name="priVal1" type="number" placeholder="valor 1" class="form-control" required>
+                                <p ng-show="userForm.priVal1.$invalid && !userForm.priVal1.$pristine" class="help-block">El valor 1 es requerido.</p>
+                                </div>
+                         </div>
+                         <div class="col-md-6">       
+                                <div class="form-group" ng-class="{ 'has-error' : userForm.priVal2.$invalid && !userForm.priVal2.$pristine }">
+                                <label>Valor 2</label>
+                                <input ng-model="priVal2" name="priVal2" type="number" placeholder="valor 2" class="form-control"  required>
+                                <p ng-show="userForm.priVal2.$invalid && !userForm.priVal2.$pristine" class="help-block">El valor 2 es requerido.</p>
+                                </div>
+                         </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6"> 
+                                <div class="form-group" ng-class="{ 'has-error' : userForm.priRes.$invalid && !userForm.priRes.$pristine }">
+                                <label>Resolución</label>
+                                <input type="text" name="priRes" class="form-control" ng-model="priRes" ng-pattern="/^[0-9]*$/"
+                                placeholder="Resolución" maxlength="3" minlength="3" required>
+                                <p ng-show="userForm.priRes.$invalid && !userForm.priRes.$pristine" class="help-block">La resolución es requerida, solo pueden ser 3 numeros</p>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error' : userForm.priRes.$invalid &&!userForm.priRes.$pristine}">
+                                </div>
+                        </div>
+                        <div class="col-md-6"> 
+                                <label>Fecha resolución</label>  
+                                <div class="input-group date">  
+                                <input data-date-format="dd-mm-yyyy" class="form-control" name="priFeRe" ng-model="priFeRe"  placeholder="Fecha Resolución" default-view="year" min-view="date" max-view="year" date-time format="yyyy-MM-dd" auto-close="true" required>
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                </div>
+                                <p ng-show="userForm.priFeRe.$invalid && !userForm.priFeRe.$pristine" class="help-block">La fecha resolución es requerida</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                         <div class="col-md-6"> 
+                                    <div class="form-group"  ng-class="{ 'has-errors' : userForm.priSector.$invalid, 'no-errors' : userForm.priSector.$valid}">
+                                    <label>Sectorss</label>
+                                    <select 
+                                    chosen
+                                    class="form-control" 
+                                    data-ng-model = "priSector1" 
+                                    ng-required = "true" 
+                                    name = "priSector"
+                                    allow-single-deselect = "true" 
+                                    placeholder-text-single = "'Seleccione Sector'"
+                                    ng-options="item as item.nombre for item in items track by item.id"
+                                    ng-change="cambiarRubro()">
+                                    <option value="">Seleccione Sector</option> 
+                                    </select>
+                                    </div> 
+                                    <div class="error-container" ng-show="userForm.priSector.$dirty && userForm.priSector.$invalid" ng-messages="userForm.priSector.$error">
+                                    <div class="error" ng-message="required" style="color: #a94442;">
+                                    El Sector es requerido.
+                                    </div>
+                                    </div>
+                                </div>
+                                 <div class="col-md-6"> 
+                                    <div class="form-group"  ng-class="{ 'has-errors' : userForm.priRubro.$invalid, 'no-errors' : userForm.priRubro.$valid}">
+                                    <label>Rubro</label>
+                                    <select 
+                                    chosen
+                                    class="form-control" 
+                                    data-ng-model = "priRubro1" 
+                                    ng-required = "true" 
+                                    name = "priRubro"
+                                    allow-single-deselect = "true" 
+                                    placeholder-text-single = "'Seleccione Rubro'"
+                                    ng-options="item as item.nombre for item in items1 track by item.id">
+                                    <option value="">Seleccione Rubro</option> 
+                                    </select>
+                                    </div> 
+                                    <div class="error-container" ng-show="userForm.priRubro.$dirty && userForm.priRubro.$invalid" ng-messages="userForm.priRubro.$error">
+                                    <div class="error" ng-message="required" style="color: #a94442;">
+                                    El rubro es requerido.
+                                    </div>
+                                    </div>
+                                </div>
+                    </div>
+                    <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group" ng-class="{ 'has-errors' : userForm.priCam.$invalid && !priCam.$pristine , 'no-errors' : userForm.priCam.$valid}">
+                                    <label>Compañia </label>
+                                    <select
+                                    style="visibility: visible;"
+                                    chosen
+                                    class="form-control"
+                                    allow-single-deselect="true"
+                                    placeholder-text-single="'Seleccione Sector'"
+                                    data-ng-model = "priCam1" 
+                                    ng-required = "true" 
+                                    name = "priCam"  
+                                    ng-options="item as item.nombre for item in items2 track by item.id" 
+                                    ng-change="listarChosenSector()">
+                                    <option value="" selected>Seleccione Compañia</option> 
+                                    </select>
+                                    </div>                                                
+                                    <div class="error-container" ng-show="userForm.priCam.$dirty && userForm.priCam.$invalid && !userForm.priCam.$pristine" ng-messages="userForm.priCam.$error">                   
+                                    <div class="error" ng-message="required" style="color: #a94442;">
+                                    La compañia es requerida.
+                                    </div>
+                                    </div>
+                                </div>
+                    </div>
+                                <br>
+                                <div class="form-inline">
+                                <label>Activo</label> 
+                                <input type="checkbox" name="priActivo" ng-model="priActivo" class="form-control" value="false" style="width: 100px;height: 18px;">
+                                </div>
+                                <br>
+                                <br>
+                                <div class="ibox-footer">
+                                <div class="form-inline">
+                                    <button ui-sref="index.primaInicial" 
+                                    class="btn btn-primary pull-left"                          
+                                    style="margin-bottom: 0px;">
+                                    <strong>Volver</strong>
+                                    </button>
+                                    <button type="submit" href="javascript:void(0);" 
+                                    class="btn btn-primary pull-right" 
+                                    ng-disabled="userForm.$invalid" 
+                                    style="margin-bottom: 0px;">
+                                    <strong>Agregar nuevo</strong>
+                                    </button>                                    
+                                </div>
+                                </div>
+                                <br>
+                                <br>                                  
+                    </form>
+                </div>
+</div>
+</div>
+</div>

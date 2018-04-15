@@ -1,0 +1,192 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-6 col-md-6">
+        <h2>Mantenedor Resolución</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a ui-sref="index.resolucionInicial">Resolución inicial</a>
+            </li>
+            <li>
+                <strong>Editar Resolución</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-6 col-md-6">
+       <a class="btn-sm pull-right" ui-sref="index.resolucionInicial" style="margin-top: 40px;height: 31px;">
+         <i class="fa fa-level-up" aria-hidden="true"></i> Volver
+      </a>  
+    </div>
+</div>
+<br>
+
+<div class="panel panel-default">
+    <div class="ibox-title">
+        <h5>Editar Resolución
+        </h5>
+    </div>
+<div class="container-fluid">
+<div class="col-lg-offset-2 col-lg-8 col-md-10 col-md-offset-1 col-sm-12 ">
+        <div>
+                    <form  name="userForm" ng-submit="modificarResolucion()" style="padding-bottom:20px;" class="ng-pristine ng-valid" novalidate>  
+                               <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group" ng-class="{ 'has-errors' : userForm.resCom.$invaesCom.$pristine , 'no-errors' : userForm.resCom.$valid}">
+                                        <label>Compañia</label> 
+                                        <select 
+                                        chosen
+                                        class="form-control"
+                                        data-ng-model = "resCom1" 
+                                        ng-required = "true" 
+                                        name = "resCom"
+                                        ng-options="room.nombre for room in items2 track by room.id"
+                                        allow-single-deselect = "true" 
+                                        placeholder-text-single = "'Seleccione Compañia'">
+                                        <option value="" selected>Seleccione Compañia</option>  
+                                        </select>
+                                        </div>                                                
+                                        <div class="error-container" ng-show="userForm.resCom.$dirty && userForm.resCom.$invalid && !userForm.resCom.$pristine" ng-messages="userForm.resCom.$error">                   
+                                        <div class="error" ng-message="required" style="color: #a94442;">
+                                            La compañia es requerida.
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group" ng-class="{ 'has-errors' : userForm.resAnio.$invalid && !userForm.resAnio.$pristine , 'no-errors' : userForm.resAnio.$valid}">
+                                        <label>Año</label>
+                                        <select 
+                                        chosen 
+                                        class="form-control"
+                                        data-ng-model = "resAnio1" 
+                                        ng-required = "true" 
+                                        name = "resAnio"
+                                        allow-single-deselect = "true" 
+                                        placeholder-text-single = "'Seleccione Año'"
+                                        ng-options = "item as item.anio for item in items1 track by item.id">
+                                        <option value="">Seleccione Año</option> 
+                                        </select>
+                                        </div> 
+                                        <div class="error-container" ng-show="userForm.resAnio.$dirty && userForm.resAnio.$invalid && !userForm.resAnio.$pristine" ng-messages="userForm.resAnio.$error">                           
+                                               <div class="error" ng-message="required" style="color: #a94442;">
+                                               El año es requerido
+                                               </div>
+                                        </div>
+                                    </div>                                                          
+                                    <div class="col-md-6">
+                                        <div class="form-group"  ng-class="{ 'has-errors' : userForm.resMes.$invalid, 'no-errors' : userForm.resMes.$valid}">
+                                        <label>Mes</label>
+                                        <select 
+                                        chosen
+                                        class="form-control" 
+                                        data-ng-model = "resMes1" 
+                                        ng-required = "true" 
+                                        name = "resMes"
+                                        allow-single-deselect = "true" 
+                                        placeholder-text-single = "'Seleccione Mes'"
+                                        ng-options="item as item.mes for item in items track by item.id">
+                                        <option value="">Seleccione Mes</option> 
+                                        </select>
+                                        </div> 
+                                        <div class="error-container" ng-show="userForm.resMes.$dirty && userForm.resMes.$invalid" ng-messages="userForm.resMes.$error">
+                                        <div class="error" ng-message="required" style="color: #a94442;">
+                                        El mes es requerido
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>           
+                                <div class="row">
+                                    <div class="col-md-6"> 
+                                            <div class="form-group" ng-class="{ 'has-error' : userForm.resResolucion.$invalid && !userForm.resResolucion.$pristine }">
+                                            <label>Resolución</label>
+                                            <input type="text" name="resResolucion" class="form-control" ng-model="resResolucion" ng-pattern="/^[0-9]*$/"
+                                            placeholder="Resolución" maxlength="3" minlength="3" required>
+                                            <p ng-show="userForm.resResolucion.$invalid && !userForm.resResolucion.$pristine" class="help-block">La resolucion es requerida, solo pueden ser 3 numeros</p>
+                                            </div>
+                                            <div class="form-group" ng-class="{'has-error' : userForm.resFechaRes.$invalid &&!userForm.resFechaRes.$pristine}">
+                                            </div>
+                                    </div>
+                                    <div class="col-md-6"> 
+                                            <label>Fecha resolución</label>  
+                                            <div class="input-group date">  
+                                            <input 
+                                            data-date-format="dd-mm-yyyy" 
+                                            ng-option="options"
+                                            ng-change="prueba()" 
+                                            class="form-control" 
+                                            name="resFechaRes" 
+                                            ng-model="resFechaRes"  
+                                            placeholder="Fecha Resolución" 
+                                            default-view="year" 
+                                            min-view="date" 
+                                            max-view="year" 
+                                            date-time 
+                                            format="yyyy-MM-dd" 
+                                            auto-close="true" 
+                                            required>
+                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                            </div>
+                                            <p ng-show="userForm.resFechaRes.$invalid && !userForm.resFechaRes.$pristine" class="help-block">El mes informado es requerido</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6"> 
+                                            <div class="form-group" ng-class="{ 'has-error' : userForm.resUfpago.$invalid && !userForm.resUfpago.$pristine }">
+                                            <label>Uf pago</label>
+                                            <input type="text" name="resUfpago" ng-model="resUfpago"  placeholder="Uf pago" class="form-control"  required>
+                                            <p ng-show="userForm.resUfpago.$invalid && !userForm.resUfpago.$pristine" class="help-block">El uf Pago es requerido</p>
+                                            </div>
+                                    </div>
+                                    <div class="col-md-6"> 
+                                            <div class="form-group" ng-class="{'has-error' : userForm.resFechapago.$invalid &&!userForm.resFechapago.$pristine}">
+                                            <label>Fecha Pago</label>  
+                                            <div class="input-group date">  
+                                            <input  data-date-format="dd-mm-yyyy" class="form-control" name="resFechapago" ng-model="resFechapago"  placeholder="Fecha Pago" default-view="year" min-view="date" max-view="year" date-time format="yyyy-MM-dd" auto-close="true" required>
+                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                            </div>
+                                            <p ng-show="userForm.resFechapago.$invalid && !userForm.resFechapago.$pristine" class="help-block">El mes informado es requerido</p>
+                                            </div>
+                                    </div>
+                                </div>
+                                           <br>  
+                                <div class="form-inline">
+                                <label>Activo</label> 
+                                <input type="checkbox" name="resActivo" ng-model="resActivo" class="form-control" value="false" style="width: 100px;height: 18px;">
+                                </div>
+                                <br>
+                                <br>
+                                <div class="ibox-footer">
+                                <div class="form-inline">
+                                    <button ui-sref="index.resolucionInicial" 
+                                    class="btn btn-primary pull-left"                            
+                                    style="margin-bottom: 0px;">
+                                    <strong>Volver</strong>
+                                    </button>
+                                    <button type="submit"
+                                    class="btn btn-primary pull-right" 
+                                    ng-disabled="userForm.$invalid" 
+                                    style="margin-bottom: 0px;">
+                                    <strong>Modificar Resolución</strong>
+                                    </button>                                    
+                                </div>
+                                </div>
+                                <br>
+                                <br>
+                    </form>
+        </div>
+</div>
+</div>
+</div>
+
+<script type="text/javascript">
+function format(input)
+{
+    var num = input.value.replace(/\./g,'');
+    if(!isNaN(num)){
+    num = num.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.');
+    num = num.split('').reverse().join('').replace(/^[\.]/,'');
+    input.value = num;
+    }
+}
+</script><!-- 
+
+

@@ -1,0 +1,123 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-6 col-md-6">
+        <h2>Mantenedor Sector</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a ui-sref="index.sectorInicial">Sector Inicial</a>
+            </li>
+            <li>
+                <a>Editar Sector</a>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-6 col-md-6">
+       <a class="btn-sm pull-right" ui-sref="index.sectorInicial" style="margin-top: 40px;height: 31px;">
+         <i class="fa fa-level-up" aria-hidden="true"></i> Volver
+      </a>  
+    </div>
+</div>
+<br>
+
+<div class="panel panel-default">
+                <div class="ibox-title">
+                    <h5>Editar Sector
+                    </h5>
+                </div>
+<div class="container-fluid">
+<div class="col-lg-offset-2 col-lg-8 col-md-10 col-md-offset-1 col-sm-12 ">
+<div>
+                <div>
+                    <form  name="userForm" ng-submit="modificarSector()" style="padding-bottom:20px;" class="ng-pristine ng-valid" novalidate>
+                    <div class="row">
+                        <div class="col-md-6">
+                                <div class="form-group" ng-class="{'has-error': userForm.secCodigo.$invalid && !userForm.secCodigo.$pristine }">
+                                <label>Código</label> 
+                                <input type="text" name="secCodigo" class="form-control" ng-model="secCodigo" placeholder="Código" maxlength="2"  onkeypress="return soloLetras(event)" required>
+                                <p ng-show="userForm.secCodigo.$invalid && !userForm.secCodigo.$pristine" class="help-block">El codigo es requerido, solo letras.</p>
+                                </div>
+                         </div>
+                         <div class="col-md-6">
+                                <div class="form-group" ng-class="{ 'has-error' : userForm.secNombre.$invalid && !userForm.secNombre.$pristine }">
+                                <label>Nombre</label> 
+                                <input type="text" name="secNombre" ng-model="secNombre"  placeholder="Nombre" class="form-control" required>
+                                <p ng-show="userForm.secNombre.$invalid && !userForm.secNombre.$pristine" class="help-block">El nombre es requerido.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-md-6">     
+                                <div class="form-group">
+                                <div class="ng-pristine ng-valid" ng-class="{ 'has-error' : userForm.secTipoRiesgo.$invalid && !userForm.secTipoRiesgo.$pristine && userForm.secNombreTipoRiesgo.$invalid && !userForm.secNombreTipoRiesgo.$pristine }">
+                                <label>Tipo riesgo</label> 
+                                <input type="number" min="0" ng-model="secTipoRiesgo" name="secTipoRiesgo" placeholder="Tipo riesgo" class="form-control" required>
+                                <p ng-show="userForm.secTipoRiesgo.$invalid && !userForm.secTipoRiesgo.$pristine" class="help-block">El tipo riesgo es requerido.</p>
+                                </div>
+                                </div>
+                        </div>
+                        <div class="col-md-6"> 
+                                <label>Nombre tipo riesgo</label> 
+                                <input ng-model="secNombreTipoRiesgo" name="secNombreTipoRiesgo" type="text" placeholder="nombre" class="form-control" required>
+                                <p ng-show="userForm.secNombreTipoRiesgo.$invalid && !userForm.secNombreTipoRiesgo.$pristine" class="help-block">
+                                El nombre tipo riesgo es requerido.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                                <div class="form-group" ng-class="{ 'has-error' : userForm.secOrden.$invalid && !userForm.secOrden.$pristine }">
+                                <label>Orden</label> 
+                                <input type="number"  min="0" ng-model="secOrden" name="secOrden" placeholder="Orden" class="form-control" required>
+                                <p ng-show="userForm.secOrden.$invalid && !userForm.secOrden.$pristine" class="help-block">El orden es requerido.</p>
+                                </div>
+                        </div>
+                    </div>
+
+                                <br>
+                                <div class="form-inline">
+                                <label>Activo</label> 
+                                <input type="checkbox" name="secActivo" ng-model="secActivo" class="form-control" value="false" style="width: 100px;height: 18px;">
+                                </div>
+                                <br>
+                                <br>
+
+                                <div class="ibox-footer">
+                                  <div class="form-inline">
+                                    <button ui-sref="index.sectorInicial" 
+                                    class="btn btn-primary pull-left">
+                                    <strong>Volver</strong>
+                                    </button>
+                                    <button type="submit" href="javascript:void(0);" 
+                                    class="btn btn-primary pull-right" 
+                                    ng-disabled="userForm.$invalid">
+                                    <strong>Modificar sector</strong>
+                                    </button>                                       
+                                  </div>
+                                </div>                                     
+                                <br>
+                                <br>
+                    </form>
+                </div>
+</div>
+</div>
+</div>          
+</div>
+
+<script>
+    function soloLetras(e){
+       key = e.keyCode || e.which;
+       tecla = String.fromCharCode(key).toLowerCase();
+       letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+       especiales = "8-37-39-46";
+
+       tecla_especial = false
+       for(var i in especiales){
+            if(key == especiales[i]){
+                tecla_especial = true;
+                break;
+            }
+        }
+
+        if(letras.indexOf(tecla)==-1 && !tecla_especial){
+            return false;
+        }
+    }
+</script>

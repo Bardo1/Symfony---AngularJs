@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="inspinia">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title page-title>Mensaje</title>
+    <link href="{{ app.request.basepath }}/css/bootstrap.min.css" rel="stylesheet">
+    <link id="loadBefore" href="{{ app.request.basepath }}/css/style.css" rel="stylesheet">
+</head>
+<body>
+<style type="text/css">
+    body {
+    background-image: url({{ app.request.basepath }}/imagenes/fondo8.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+</style>
+<div class="loginColumns animated fadeInDown">
+<div class="ibox-content">
+    <div class="row">
+        <div class="center-block">
+            <img src="{{ app.request.basepath }}/imagenes/iconoEmail.png" class="img-rounded img-responsive center-block" style="width:130px;text-align:center;"/>
+        </div>
+        <div>
+        <br>
+            <div class="ibox-content">
+            <div>
+            <p>Un correo electronico ha sido enviado. Contiene un enlace al que debe hacer clic para restablecer su contraseña.</p>
+            <p>Nota: Sólo puede solicitar una nueva contraseña una vez dentro de {{ tokenLifetime }} horas.
+            Si no recibe un correo electrónico, compruebe su carpeta de correo no deseado o vuelva a intentarlo.</p>
+            </div>
+
+<br>
+<br>
+
+<div class="form-group">
+    <label class="col-md-4 control-label" for="singlebutton"></label>
+    <div class="col-md-4">
+        <a id="singlebutton" href="{{ path('login_inicial') }}" name="singlebutton" class="btn btn-primary center-block">
+            Volver al Login
+        </a>
+    </div>
+</div>
+
+            </div>
+           </div>
+        </div>
+    </div>
+
+</div>
+</div>
+</body>
+</html>
